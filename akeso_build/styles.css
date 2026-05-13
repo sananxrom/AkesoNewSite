@@ -261,8 +261,8 @@ main { padding-top:60px; }
 /* ── FOOTER ── */
 footer.foot { background:var(--black); color:var(--surface); padding:clamp(68px,9vw,108px) var(--pad-x) 32px; }
 .foot-top { display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:var(--gutter); padding-bottom:clamp(52px,7vw,84px); border-bottom:1px solid rgba(255,255,255,0.12); }
-.foot-mark { display:flex; flex-direction:column; gap:20px; }
-.foot-mark svg { height:22px; width:auto; display:block; }
+.foot-mark { display:flex; flex-direction:column; gap:20px; align-items:flex-start; }
+.foot-mark svg { height:22px; width:auto; display:block; margin-right:auto; }
 .foot-mark svg path { fill:var(--surface); }
 .foot-mark p { font-size:13.5px; line-height:1.5; color:rgba(255,255,255,0.55); margin:0; }
 .foot-col h5 { font-family:var(--mono); font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.38); margin:0 0 15px; font-weight:500; }
@@ -461,3 +461,7 @@ a.contact-block-value:hover { color:var(--accent); }
   .value-row .v-desc { display:none; }
   .sys-grid { grid-template-columns:1fr; }
 }
+
+/* First content section after hero gets extra breathing room */
+.hero + section, .hero + .img-strip + section { padding-top: var(--pad-y); }
+.shell:not(header):not(footer) > .section-head:first-child { padding-top: var(--pad-y); }
