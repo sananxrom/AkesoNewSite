@@ -1,99 +1,83 @@
-/* AKESO — shared page behavior
-   - js-ready class for reveal animations
-   - scroll reveal (IntersectionObserver)
-   - sticky nav
-   - metric count-up
-   - hero SVG animation (homepage)
-   - Lucide icons init
-   - parallax
-*/
+/* AKESO — shared page behavior */
 (function () {
   'use strict';
 
-  // ── JS READY — enables CSS animations ──────────────────────
-  document.documentElement.classList.add('js-ready');
-
   // ── LUCIDE ICONS ────────────────────────────────────────────
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
-  } else {
-    // retry after load
-    window.addEventListener('load', function () {
-      if (typeof lucide !== 'undefined') lucide.createIcons();
-    });
+  function initLucide() {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
   }
+  initLucide();
+  window.addEventListener('load', initLucide);
 
   // ── SCROLL REVEAL ───────────────────────────────────────────
-  var revealObs = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      var el = e.target;
-      el.classList.add('in');
-      // trigger count-up for any metrics inside
-      el.querySelectorAll('.v[data-count]').forEach(startCountUp);
-      revealObs.unobserve(el);
-    });
-  }, { threshold: 0.07 });
+  // Simple: observe everything with .reveal/.reveal-stagger/.reveal-fade
+  // Add .in when 8% visible. No js-ready gate needed.
+  var revealEls = Array.from(document.querySelectorAll('.reveal, .reveal-stagger, .reveal-fade'));
 
-  document.querySelectorAll('.reveal, .reveal-stagger, .reveal-fade').forEach(function (el) {
-    revealObs.observe(el);
-  });
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        // trigger count-up for metrics inside
+        e.target.querySelectorAll('.v[data-count]').forEach(startCountUp);
+        obs.unobserve(e.target);
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(function(el) { obs.observe(el); });
+  } else {
+    // No IntersectionObserver — just show everything
+    revealEls.forEach(function(el) { el.classList.add('in'); });
+  }
 
   // ── NAV SOLID ON SCROLL ─────────────────────────────────────
   var nav = document.getElementById('nav');
-  var lastY = -1;
   function onScroll() {
-    var y = window.scrollY;
-    if (y === lastY) return;
-    lastY = y;
     if (!nav) return;
-    if (y > 24) nav.classList.add('solid');
+    if (window.scrollY > 24) nav.classList.add('solid');
     else nav.classList.remove('solid');
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
   // ── METRIC COUNT-UP ─────────────────────────────────────────
-  var seenMetrics = new WeakSet();
+  var counted = new WeakSet();
   function startCountUp(el) {
-    if (seenMetrics.has(el)) return;
-    seenMetrics.add(el);
+    if (counted.has(el)) return;
+    counted.add(el);
     var target = parseInt(el.getAttribute('data-count'), 10);
     if (isNaN(target)) return;
     var unit = el.querySelector('.unit');
     var unitHTML = unit ? unit.outerHTML : '';
     var finalHTML = el.innerHTML;
-    var dur = 1200;
-    var startTime = null;
-    var done = false;
+    var dur = 1200, startTime = null, done = false;
     function step(t) {
       if (!startTime) startTime = t;
       var p = Math.min(1, (t - startTime) / dur);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(target * eased);
+      var v = Math.round((1 - Math.pow(1 - p, 3)) * target);
+      el.textContent = v;
       if (unitHTML) el.insertAdjacentHTML('beforeend', unitHTML);
       if (p < 1) requestAnimationFrame(step);
       else done = true;
     }
     requestAnimationFrame(step);
-    setTimeout(function () { if (!done) el.innerHTML = finalHTML; }, 2000);
+    setTimeout(function() { if (!done) el.innerHTML = finalHTML; }, 2500);
   }
 
-  // also check metrics visible on load
-  document.querySelectorAll('.metric .v[data-count]').forEach(function (el) {
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { startCountUp(e.target); obs.unobserve(e.target); }
-      });
-    }, { threshold: 0.1 });
-    obs.observe(el);
+  // Also trigger count-up for metrics already in view on load
+  window.addEventListener('load', function() {
+    document.querySelectorAll('.metric .v[data-count]').forEach(function(el) {
+      var rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) startCountUp(el);
+    });
   });
 
   // ── PARALLAX ────────────────────────────────────────────────
   function setupParallax(id, factor) {
     var el = document.getElementById(id);
     if (!el) return;
-    window.addEventListener('scroll', function () {
+    window.addEventListener('scroll', function() {
       var parent = el.parentElement;
       if (!parent) return;
       var rect = parent.getBoundingClientRect();
@@ -107,24 +91,23 @@
   setupParallax('parallax-future', 65);
   setupParallax('parallax-ntnb', 55);
 
-  // ── HERO RETICLE ────────────────────────────────────────────
+  // ── HERO RETICLE MOUSEMOVE ───────────────────────────────────
   var heroViz = document.getElementById('hero-viz');
   var reticle = document.getElementById('hero-reticle');
   if (heroViz && reticle) {
     var rx = 0, ry = 0, tx = 0, ty = 0;
-    heroViz.addEventListener('mousemove', function (e) {
+    heroViz.addEventListener('mousemove', function(e) {
       var r = heroViz.getBoundingClientRect();
       tx = (e.clientX - (r.left + r.width / 2)) * 0.055;
       ty = (e.clientY - (r.top + r.height / 2)) * 0.055;
     });
-    heroViz.addEventListener('mouseleave', function () { tx = 0; ty = 0; });
-    function reticleLoop() {
+    heroViz.addEventListener('mouseleave', function() { tx = 0; ty = 0; });
+    (function loop() {
       rx += (tx - rx) * 0.08;
       ry += (ty - ry) * 0.08;
       reticle.style.transform = 'translate(calc(-50% + ' + rx + 'px), calc(-50% + ' + ry + 'px))';
-      requestAnimationFrame(reticleLoop);
-    }
-    reticleLoop();
+      requestAnimationFrame(loop);
+    })();
   }
 
   // ── RETICLE RING ANIMATION ──────────────────────────────────
@@ -134,7 +117,7 @@
   var pulse2 = document.getElementById('pulse2');
   if (rotRing) {
     var angle = 0, pt = 0;
-    function ringTick() {
+    (function ringTick() {
       angle += 0.16;
       rotRing.setAttribute('transform', 'rotate(' + angle + ' 130 130)');
       if (rotRingInner) rotRingInner.setAttribute('transform', 'rotate(' + (-angle * 0.65) + ' 130 130)');
@@ -146,95 +129,46 @@
         pulse2.setAttribute('r', s2); pulse2.setAttribute('opacity', o2);
       }
       requestAnimationFrame(ringTick);
-    }
-    requestAnimationFrame(ringTick);
+    })();
   }
 
-  // ── HERO WORD REVEAL ────────────────────────────────────────
-  var h1 = document.getElementById('hero-h1');
-  if (h1) {
-    var html = h1.innerHTML;
-    var idx = 0;
-    var wrapped = html.replace(/([a-zA-Z\u4e00-\u9fa5][^\s<>]*)/g, function (w) {
-      if (w.startsWith('&')) return w;
-      idx++;
-      var delay = (idx * 0.065).toFixed(2);
-      return '<span class="word"><span class="inner" style="animation-delay:' + delay + 's">' + w + '</span></span>';
-    });
-    h1.innerHTML = wrapped;
-  }
-
-  // ── LEGACY SVG HERO WAVEFRONT (tech pages) ──────────────────
-  var raysG = document.getElementById('rays');
-  var ticksG = document.getElementById('ticks');
-  var irisSpokes = document.getElementById('iris-spokes');
-
+  // ── LEGACY SVG WAVEFRONT (if present) ───────────────────────
   function svgEl(tag, attrs) {
     var n = document.createElementNS('http://www.w3.org/2000/svg', tag);
     for (var k in attrs) n.setAttribute(k, attrs[k]);
     return n;
   }
-
+  var raysG = document.getElementById('rays');
   if (raysG) {
-    var cx = 400, cy = 400, N = 28;
-    for (var i = 0; i < N; i++) {
-      var a = (i / N) * Math.PI * 2;
-      raysG.appendChild(svgEl('line', {
-        x1: cx + Math.cos(a) * 380, y1: cy + Math.sin(a) * 380,
-        x2: cx + Math.cos(a) * 40,  y2: cy + Math.sin(a) * 40,
-        'stroke-dasharray': '1,3'
-      }));
+    for (var i = 0; i < 28; i++) {
+      var a = (i / 28) * Math.PI * 2;
+      raysG.appendChild(svgEl('line', { x1: 400 + Math.cos(a)*380, y1: 400 + Math.sin(a)*380, x2: 400 + Math.cos(a)*40, y2: 400 + Math.sin(a)*40, 'stroke-dasharray': '1,3' }));
     }
   }
+  var ticksG = document.getElementById('ticks');
   if (ticksG) {
-    var tcx = 400, tcy = 400, tr = 380;
     for (var ti = 0; ti < 72; ti++) {
-      var ta = (ti / 72) * Math.PI * 2;
-      ticksG.appendChild(svgEl('line', {
-        x1: tcx + Math.cos(ta) * tr, y1: tcy + Math.sin(ta) * tr,
-        x2: tcx + Math.cos(ta) * (tr + (ti % 6 === 0 ? 10 : 5)),
-        y2: tcy + Math.sin(ta) * (tr + (ti % 6 === 0 ? 10 : 5))
-      }));
+      var ta = (ti / 72) * Math.PI * 2, tr = 380;
+      ticksG.appendChild(svgEl('line', { x1: 400+Math.cos(ta)*tr, y1: 400+Math.sin(ta)*tr, x2: 400+Math.cos(ta)*(tr+(ti%6===0?10:5)), y2: 400+Math.sin(ta)*(tr+(ti%6===0?10:5)) }));
     }
   }
-  if (irisSpokes) {
-    var isx = 300, isy = 300;
-    for (var ii = 0; ii < 96; ii++) {
-      var ia = (ii / 96) * Math.PI * 2;
-      irisSpokes.appendChild(svgEl('line', {
-        x1: isx + Math.cos(ia) * 56, y1: isy + Math.sin(ia) * 56,
-        x2: isx + Math.cos(ia) * 138, y2: isy + Math.sin(ia) * 138,
-        opacity: 0.4 + 0.6 * Math.abs(Math.sin(ii * 0.7))
-      }));
-    }
-  }
-
   var w1 = document.getElementById('wavefront-1');
   var w2 = document.getElementById('wavefront-2');
   var w3 = document.getElementById('wavefront-3');
-  var heroCounter = document.getElementById('hero-counter');
   if (w1 || w2 || w3) {
     var wt0 = null;
-    function waveTick(t) {
+    (function waveTick(t) {
       if (wt0 === null) wt0 = t;
-      var elapsed = (t - wt0) / 1000;
-      var period = 5.6;
+      var e = (t - wt0) / 1000, period = 5.6;
       function setRing(el, phase) {
         if (!el) return;
-        var p = ((elapsed / period) + phase) % 1;
+        var p = ((e / period) + phase) % 1;
         el.setAttribute('r', (22 + p * 340).toFixed(1));
         el.setAttribute('stroke-opacity', ((1 - p) * 0.7).toFixed(3));
       }
       setRing(w1, 0); setRing(w2, 0.34); setRing(w3, 0.67);
-      if (heroCounter) heroCounter.textContent = 'f / ' + ((elapsed * 0.018) % 0.999).toFixed(3);
       requestAnimationFrame(waveTick);
-    }
-    requestAnimationFrame(waveTick);
+    })(performance.now());
   }
-
-  // ── VISIBILITY PAUSE ────────────────────────────────────────
-  document.addEventListener('visibilitychange', function () {
-    // rAF auto-pauses when hidden — nothing extra needed
-  });
 
 })();
