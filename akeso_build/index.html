@@ -12,6 +12,7 @@
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <style>
 html{visibility:hidden}html.ready{visibility:visible}
+/* Safety: always show after 400ms even if JS fails */
 
 /* ── HERO ── */
 .hero{min-height:80vh!important;padding-top:60px;grid-template-columns:52% 48%}
@@ -593,6 +594,8 @@ html{visibility:hidden}html.ready{visibility:visible}
 <script>
 // ── GEO LANGUAGE AUTO-DETECT ──────────────────────────────
 (function(){
+  // Always show page — no matter what
+  function showPage(){ document.documentElement.classList.add('ready'); }
   try {
     var tz = Intl.DateTimeFormat().resolvedOptions().timeZone||'';
     var lang = (navigator.language||navigator.userLanguage||'').toLowerCase();
@@ -603,7 +606,9 @@ html{visibility:hidden}html.ready{visibility:visible}
     try{saved=localStorage.getItem('akeso.lang');}catch(e){}
     if(!saved&&(isCN||isZH)){try{localStorage.setItem('akeso.lang','zh');}catch(e){}}
   }catch(e){}
-  document.documentElement.classList.add('ready');
+  showPage();
+  // Double safety: force visible after 500ms
+  setTimeout(showPage, 500);
 })();
 
 // ── LUCIDE INIT ───────────────────────────────────────────
@@ -710,14 +715,37 @@ function countUp(el){
 (function(){
   var h1=document.getElementById('hero-h1');
   if(!h1) return;
-  var html=h1.innerHTML;
-  var i=0;
-  var wrapped=html.replace(/([a-zA-Z\u4e00-\u9fa5][^\s<>]*)/g,function(w){
-    i++;
-    var delay=(i*0.07).toFixed(2);
-    return '<span class="word"><span class="inner" style="animation-delay:'+delay+'s">'+w+'</span></span>';
-  });
-  h1.innerHTML=wrapped;
+  var wordIdx=0;
+  function wrapTextNode(node){
+    var text=node.nodeValue;
+    if(!text||!text.trim()) return;
+    var parts=text.split(/(\s+)/);
+    var frag=document.createDocumentFragment();
+    parts.forEach(function(part){
+      if(!part.trim()){
+        frag.appendChild(document.createTextNode(part));
+      } else {
+        var outer=document.createElement('span');
+        outer.className='word';
+        var inner=document.createElement('span');
+        inner.className='inner';
+        inner.style.animationDelay=(wordIdx*0.08).toFixed(2)+'s';
+        inner.textContent=part;
+        outer.appendChild(inner);
+        frag.appendChild(outer);
+        wordIdx++;
+      }
+    });
+    node.parentNode.replaceChild(frag,node);
+  }
+  function processNode(el){
+    var children=Array.from(el.childNodes);
+    children.forEach(function(child){
+      if(child.nodeType===3){ wrapTextNode(child); }
+      else if(child.nodeType===1){ processNode(child); }
+    });
+  }
+  processNode(h1);
 })();
 
 // ── NTNB + NEW STRINGS I18N ───────────────────────────────
