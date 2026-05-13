@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>About — AKESO</title>
+<meta name="description" content="About AKESO — a research-driven visual technology company founded by ophthalmologists, building advanced optical systems from an understanding of human vision." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+.page-hero {
+  padding-top: clamp(80px, 10vw, 120px);
+  padding-bottom: clamp(64px, 8vw, 96px);
+  border-top: 0;
+}
+.page-hero .eyebrow { margin-bottom: 28px; }
+.page-hero h1 {
+  font-size: clamp(40px, 6.5vw, 92px);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+  margin: 0 0 28px;
+  max-width: 20ch;
+}
+.page-hero p {
+  font-size: clamp(17px, 1.35vw, 20px);
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 52ch;
+  margin: 0;
+}
+
+/* ── origin section ── */
+.origin {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+.origin-text {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 3vw, 36px);
+}
+.origin-text p { margin: 0; font-size: clamp(15px,1.1vw,17px); line-height: 1.65; color: var(--ink-2); max-width: 48ch; }
+.origin-text p.lede { font-size: clamp(18px,1.5vw,22px); line-height: 1.45; color: var(--ink); font-weight: 400; }
+.origin-visual {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4 / 3;
+}
+.origin-visual img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.origin-visual .corner {
+  position: absolute;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  z-index: 4;
+}
+.origin-visual .corner.tl { top: 16px; left: 16px; display:flex; gap:8px; align-items:center; }
+.origin-visual .corner.tl::before { content:""; width:6px; height:6px; background:var(--accent); border-radius:50%; animation: pulse 2.4s ease-in-out infinite; }
+.origin-visual .corner.br { bottom: 16px; right: 16px; color: var(--ink-3); }
+
+/* ── approach pillars ── */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: clamp(48px, 6vw, 72px);
+}
+.pillar {
+  background: var(--surface);
+  padding: clamp(24px, 2.8vw, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 180px;
+}
+.pillar .p-idx {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  text-transform: uppercase;
+}
+.pillar h4 {
+  font-size: clamp(17px, 1.4vw, 21px);
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  margin: 0;
+  line-height: 1.2;
+}
+.pillar p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-3);
+  margin: 0;
+}
+.pillar .dot-accent {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin-top: auto;
+}
+
+/* ── leadership ── */
+.leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(32px, 4vw, 56px);
+}
+.leader-card {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: clamp(24px, 2.4vw, 36px);
+  align-items: start;
+}
+.leader-photo {
+  aspect-ratio: 3 / 4;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+.leader-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: grayscale(0.15);
+}
+.leader-photo .photo-label {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.leader-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 4px;
+}
+.leader-name {
+  font-size: clamp(18px, 1.6vw, 22px);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin: 0;
+  line-height: 1.15;
+}
+.leader-role {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.leader-bio {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  margin: 0;
+  margin-top: 4px;
+}
+
+/* ── team section ── */
+.team-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: start;
+}
+.team-photo {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4 / 3;
+}
+.team-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(0.1);
+}
+.team-photo .corner {
+  position: absolute;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  z-index: 4;
+}
+.team-photo .corner.tl { top: 16px; left: 16px; }
+.team-photo .corner.br { bottom: 16px; right: 16px; }
+.team-text {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 2.4vw, 32px);
+  padding-top: 8px;
+}
+.team-text p { margin: 0; font-size: clamp(14px, 1.05vw, 16px); line-height: 1.65; color: var(--ink-2); }
+
+/* ── values ── */
+.values-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--rule);
+}
+.value-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 2fr;
+  gap: clamp(24px, 3vw, 48px);
+  padding: 28px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+.value-row .v-num {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  padding-top: 3px;
+}
+.value-row .v-title {
+  font-size: clamp(16px, 1.3vw, 19px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: var(--ink);
+}
+.value-row .v-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-3);
+  margin: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a class="nav-logo" href="index.html" aria-label="AKESO">
+    <svg viewBox="0 0 1193.28 246.77" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M374.69,107.54l103.32,135.17h-50.82l-80.97-106.71-36.93,37.94v68.77h-41.67V5.57h41.67v119.25L421.78,5.57h51.83l-98.92,101.97ZM544.06,142.09h118.91v-37.6h-118.91v-61.66h134.15V5.57h-175.82v237.14h177.52v-37.27h-135.85v-63.35ZM814.56,105.16c-45.73-10.84-56.57-18.97-56.57-37.27v-.68c0-15.92,14.23-28.12,38.62-28.12,21.68,0,42.68,8.47,64.37,24.39l22.36-31.51c-24.39-19.31-51.16-29.81-86.05-29.81-47.09,0-80.97,28.12-80.97,68.77v.68c0,43.36,28.46,58.95,78.93,70.8,44.04,9.82,53.53,19.65,53.53,36.25v.68c0,17.62-16.26,29.81-42.01,29.81-29.47,0-51.83-10.84-74.87-30.83l-25.07,29.81c28.46,25.75,62.33,37.94,98.92,37.94,49.8,0,84.69-26.09,84.69-70.8v-.68c0-39.64-26.09-56.57-75.89-69.45ZM1160.11,123.46v.68c0,66.4-51.49,122.64-124.33,122.64s-123.65-55.22-123.65-121.96v-.68c0-66.4,51.49-122.64,124.33-122.64s123.65,55.22,123.65,121.96ZM1116.41,124.14c0-46.07-33.2-84.02-80.63-84.02s-79.95,37.26-79.95,83.34v.68c0,46.07,33.2,84.02,80.63,84.02s79.95-37.27,79.95-83.34v-.68ZM22.69,196.22c13.54-13.95,29.95-25.04,48.4-32.43,2.02-.81,4.05-1.57,6.09-2.28l5.51-12.98,40.16-94.55.13-.31.13.31,40.16,94.55,5.51,12.98c2.05.7,4.08,1.46,6.1,2.28,18.44,7.39,34.85,18.47,48.39,32.42.86.89,2.31-.1,1.81-1.23L141.63,3.88h-37.27L20.88,194.98c-.49,1.13.95,2.12,1.81,1.23ZM172.41,170c-15.29-6.14-31.96-9.52-49.42-9.52s-34.13,3.38-49.42,9.52c-31.43,12.6-56.96,36.86-71.23,67.41-.83,1.74-1.61,3.52-2.34,5.3h41.29c1.19-1.92,2.46-3.79,3.79-5.62,17.51-24.08,45.91-39.77,77.91-39.77s60.4,15.69,77.91,39.77c1.34,1.83,2.6,3.71,3.79,5.62h41.29c-.74-1.79-1.52-3.56-2.34-5.3-14.27-30.54-39.81-54.81-71.23-67.41Z"/>
+    </svg>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav.home">Home</a>
+    <a href="technology.html" data-i18n="nav.technology">Technology</a>
+    <a href="research.html" data-i18n="nav.research">Research Areas</a>
+    <a href="about.html" class="active" data-i18n="nav.about">About</a>
+    <a href="contact.html" data-i18n="nav.contact">Contact</a>
+  </div>
+  <div class="nav-right">
+    <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Toggle language">
+      <span class="seg" data-lang="en">EN</span>
+      <span class="seg-sep">/</span>
+      <span class="seg" data-lang="zh">中文</span>
+    </button>
+    <a class="btn btn-primary nav-cta" href="contact.html">
+      <span class="dot"></span>
+      <span data-i18n="nav.partner">Partner With AKESO</span>
+    </a>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- PAGE HERO -->
+<header class="page-hero shell reveal">
+  <div class="eyebrow"><span data-i18n="about.eyebrow">About AKESO</span></div>
+  <h1 data-i18n-html="about.h1">Founded Around<br/>Human Vision.</h1>
+  <p data-i18n="about.intro">AKESO is a research-driven visual technology company focused on advanced optics, precision engineering, and future-facing human vision systems — built by ophthalmologists and technologists who believe the eye should be the starting point of every visual technology.</p>
+</header>
+
+<!-- ORIGIN -->
+<section class="section shell" id="origin">
+  <div class="section-head reveal">
+    <div class="meta">
+      <span class="section-index" data-i18n="about.origin_index">01 — Origin</span>
+      <span class="eyebrow no-dot mono" data-i18n="about.origin_eyebrow">Founded Around Human Vision</span>
+    </div>
+    <h2 class="h2" data-i18n="about.origin_h2">Technology built from an understanding of the eye — not built around it.</h2>
+  </div>
+  <div class="origin reveal">
+    <div class="origin-text">
+      <p class="lede" data-i18n="about.origin_lede">AKESO was built on the understanding that the future of visual technology requires a deeper alignment between engineering and the human visual system.</p>
+      <p data-i18n="about.origin_p1">With foundations in ophthalmology, optical science, and advanced visual research, the company develops technologies designed around how humans actually see and interact with visual information — taking acuity, accommodation, depth perception, and long-duration visual comfort as primary engineering constraints, not afterthoughts.</p>
+      <p data-i18n="about.origin_p2">This founding philosophy — technology should adapt to human vision, not the other way around — shapes every research direction, product decision, and partnership the company pursues.</p>
+    </div>
+    <div class="origin-visual">
+      <span class="corner tl" data-i18n="about.origin_label">AKESO · Research Facility</span>
+      <span class="corner br">Beijing, China</span>
+      <img src="https://cdn.prod.website-files.com/681451bac67f54c488a23054/68218f8a410727114a1a5bf1_10571734924904_.pic.jpg" alt="AKESO research facility" loading="lazy">
+    </div>
+  </div>
+
+  <!-- Approach pillars -->
+  <div class="pillars reveal-stagger">
+    <div class="pillar">
+      <span class="p-idx">A / 01</span>
+      <h4 data-i18n="about.pillar1_h">Ophthalmic Science First</h4>
+      <p data-i18n="about.pillar1_p">Every technology direction begins with a rigorous understanding of human visual biology — not with available hardware.</p>
+      <div class="dot-accent"></div>
+    </div>
+    <div class="pillar">
+      <span class="p-idx">A / 02</span>
+      <h4 data-i18n="about.pillar2_h">Research-Led Development</h4>
+      <p data-i18n="about.pillar2_p">AKESO operates as a research organization first — technical depth precedes commercialization at every stage.</p>
+      <div class="dot-accent"></div>
+    </div>
+    <div class="pillar">
+      <span class="p-idx">A / 03</span>
+      <h4 data-i18n="about.pillar3_h">Precision Engineering</h4>
+      <p data-i18n="about.pillar3_p">From semiconductor-grade lithography to nano-scale optical structures, manufacturing precision is a core competency, not a capability gap.</p>
+      <div class="dot-accent"></div>
+    </div>
+    <div class="pillar">
+      <span class="p-idx">A / 04</span>
+      <h4 data-i18n="about.pillar4_h">Long-Term Thinking</h4>
+      <p data-i18n="about.pillar4_p">Building foundational visual technologies requires thinking in decades — not product cycles. AKESO operates on that horizon.</p>
+      <div class="dot-accent"></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="section shell" id="leadership">
+  <div class="section-head reveal">
+    <div class="meta">
+      <span class="section-index" data-i18n="about.lead_index">02 — Leadership</span>
+      <span class="eyebrow no-dot mono" data-i18n="about.lead_eyebrow">Founders &amp; Chief Scientists</span>
+    </div>
+    <h2 class="h2" data-i18n="about.lead_h2">Ophthalmologists and scientists building the visual technologies of the next era.</h2>
+  </div>
+  <div class="leadership-grid reveal-stagger">
+    <div class="leader-card">
+      <div class="leader-photo">
+        <img src="https://cdn.prod.website-files.com/681451bac67f54c488a23054/682197dcd05733ac2b583328_2331747031909_.pic_hd.jpg" alt="Dr. Cai Xiaogu" loading="lazy">
+        <span class="photo-label">CEO</span>
+      </div>
+      <div class="leader-info">
+        <div class="leader-role" data-i18n="about.ceo_role">CEO · AKESO</div>
+        <h3 class="leader-name" data-i18n="about.ceo_name">Dr. Cai Xiaogu</h3>
+        <p class="leader-bio" data-i18n="about.ceo_bio">An accomplished leader in ophthalmic innovation and digital eye health, Dr. Cai has driven development of AI-powered diagnostics, wearable myopia control devices, and advanced AR/VR vision solutions. He holds a Ph.D. in Ophthalmology from Beijing Tongren Hospital and has over 30 patents and multiple publications in leading journals.</p>
+      </div>
+    </div>
+    <div class="leader-card">
+      <div class="leader-photo">
+        <img src="https://cdn.prod.website-files.com/681451bac67f54c488a23054/682197b2d9ea354b30bcb277_2311747031813.jpg" alt="Prof. Wang Ningli" loading="lazy">
+        <span class="photo-label">Chief Scientist</span>
+      </div>
+      <div class="leader-info">
+        <div class="leader-role" data-i18n="about.cs_role">Chief Scientist · AKESO</div>
+        <h3 class="leader-name" data-i18n="about.cs_name">Prof. Wang Ningli</h3>
+        <p class="leader-bio" data-i18n="about.cs_bio">A globally recognized ophthalmologist and AKESO's Chief Scientist, Professor Wang serves as Director of Beijing Tongren Eye Center and Dean of the School of Ophthalmology at Capital Medical University. With over 30 years of clinical and research experience, he has published more than 400 peer-reviewed papers and holds 20 patents.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE TEAM -->
+<section class="section shell" id="team">
+  <div class="section-head reveal">
+    <div class="meta">
+      <span class="section-index" data-i18n="about.team_index">03 — The Team</span>
+      <span class="eyebrow no-dot mono" data-i18n="about.team_eyebrow">Global Research Organisation</span>
+    </div>
+    <h2 class="h2" data-i18n="about.team_h2">A globally distributed team of specialists, unified by deep technical expertise and a long-term vision.</h2>
+  </div>
+  <div class="team-block reveal">
+    <div class="team-photo">
+      <img src="https://cdn.prod.website-files.com/681451bac67f54c488a23054/68219b2be411bb1c175beb50_E95BB3FF-9EA1-4500-9531-0060CB54E510.jpeg" alt="AKESO team" loading="lazy">
+      <span class="corner tl" data-i18n="about.team_label">AKESO Team</span>
+      <span class="corner br" data-i18n="about.team_label_br">China · India · Singapore · Japan</span>
+    </div>
+    <div class="team-text">
+      <p data-i18n="about.team_p1">At the heart of AKESO is a dynamic, globally connected team with a passion for innovation and excellence. Founders and core members bring international perspective, entrepreneurial spirit, and proven experience from top technology companies.</p>
+      <p data-i18n="about.team_p2">Nearly 70% of the workforce is focused on research and development — with almost 80% of the core R&D team holding advanced degrees. Technical depth is the foundation the company is built on.</p>
+      <p data-i18n="about.team_p3">Spanning China, India, Singapore, Japan, and beyond, the team unites specialists across optics, AI, engineering, and consumer electronics. This diversity of backgrounds and disciplines enables AKESO to approach visual technology as a genuinely multidisciplinary challenge.</p>
+      <!-- Team stats -->
+      <div class="metrics" style="margin-top: 8px;">
+        <div class="metric">
+          <span class="k" data-i18n="about.stat1_k">R&amp;D Focus</span>
+          <span class="v">70<span class="unit">%</span></span>
+        </div>
+        <div class="metric">
+          <span class="k" data-i18n="about.stat2_k">Advanced Degrees</span>
+          <span class="v">80<span class="unit">%</span></span>
+        </div>
+        <div class="metric">
+          <span class="k" data-i18n="about.stat3_k">Total Patents</span>
+          <span class="v">48<span class="unit">+</span></span>
+        </div>
+        <div class="metric">
+          <span class="k" data-i18n="about.stat4_k">Countries</span>
+          <span class="v">5<span class="unit">+</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="section shell" id="values">
+  <div class="section-head reveal">
+    <div class="meta">
+      <span class="section-index" data-i18n="about.values_index">04 — Principles</span>
+      <span class="eyebrow no-dot mono" data-i18n="about.values_eyebrow">How We Work</span>
+    </div>
+    <h2 class="h2" data-i18n="about.values_h2">Precision over hype. Research over roadmaps. Vision over shortcuts.</h2>
+  </div>
+  <div class="values-list reveal">
+    <div class="value-row">
+      <span class="v-num">01</span>
+      <span class="v-title" data-i18n="about.v1_title">Precision Over Hype</span>
+      <p class="v-desc" data-i18n="about.v1_desc">Technical rigour and honest assessment of what is possible — grounded in science, not trend cycles or investor narratives.</p>
+    </div>
+    <div class="value-row">
+      <span class="v-num">02</span>
+      <span class="v-title" data-i18n="about.v2_title">Research-Driven Innovation</span>
+      <p class="v-desc" data-i18n="about.v2_desc">Every technology AKESO develops is grounded in documented research, clinical understanding, and systematic engineering — not intuition or iteration alone.</p>
+    </div>
+    <div class="value-row">
+      <span class="v-num">03</span>
+      <span class="v-title" data-i18n="about.v3_title">Human-Centred Visual Technology</span>
+      <p class="v-desc" data-i18n="about.v3_desc">The human eye is the design brief. AKESO builds technologies that serve human visual biology — not the other way around.</p>
+    </div>
+    <div class="value-row">
+      <span class="v-num">04</span>
+      <span class="v-title" data-i18n="about.v4_title">Long-Term Thinking</span>
+      <p class="v-desc" data-i18n="about.v4_desc">Foundational technologies take time. AKESO is building infrastructure for the visual layer of the next generation of computing — a horizon measured in years, not quarters.</p>
+    </div>
+    <div class="value-row">
+      <span class="v-num">05</span>
+      <span class="v-title" data-i18n="about.v5_title">Scientific Rigour</span>
+      <p class="v-desc" data-i18n="about.v5_desc">Published research, peer-reviewed findings, and clinical trials are the standard. AKESO does not make claims it cannot substantiate.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta shell">
+  <div class="reveal" style="display:flex;flex-direction:column;align-items:center;gap:32px;">
+    <span class="eyebrow no-dot mono" data-i18n="sec7.eyebrow">/ Get In Touch</span>
+    <h2 data-i18n="sec7.h2">Collaborate with AKESO.</h2>
+    <p data-i18n="sec7.p">For enterprise partnerships, research collaborations, and advanced visual technology initiatives — we work with teams building the visual layer of what comes next.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="contact.html">
+        <span class="dot"></span>
+        <span data-i18n="sec7.cta_partner">Partner With AKESO</span>
+        <svg class="arrow" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 1l4 4-4 4M1 5h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="contact.html">
+        <span data-i18n="sec7.cta_contact">Contact Research Team</span>
+        <svg class="arrow" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 1l4 4-4 4M1 5h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-top">
+    <div class="foot-mark">
+      <svg viewBox="0 0 1193.28 246.77" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M374.69,107.54l103.32,135.17h-50.82l-80.97-106.71-36.93,37.94v68.77h-41.67V5.57h41.67v119.25L421.78,5.57h51.83l-98.92,101.97ZM544.06,142.09h118.91v-37.6h-118.91v-61.66h134.15V5.57h-175.82v237.14h177.52v-37.27h-135.85v-63.35ZM814.56,105.16c-45.73-10.84-56.57-18.97-56.57-37.27v-.68c0-15.92,14.23-28.12,38.62-28.12,21.68,0,42.68,8.47,64.37,24.39l22.36-31.51c-24.39-19.31-51.16-29.81-86.05-29.81-47.09,0-80.97,28.12-80.97,68.77v.68c0,43.36,28.46,58.95,78.93,70.8,44.04,9.82,53.53,19.65,53.53,36.25v.68c0,17.62-16.26,29.81-42.01,29.81-29.47,0-51.83-10.84-74.87-30.83l-25.07,29.81c28.46,25.75,62.33,37.94,98.92,37.94,49.8,0,84.69-26.09,84.69-70.8v-.68c0-39.64-26.09-56.57-75.89-69.45ZM1160.11,123.46v.68c0,66.4-51.49,122.64-124.33,122.64s-123.65-55.22-123.65-121.96v-.68c0-66.4,51.49-122.64,124.33-122.64s123.65,55.22,123.65,121.96ZM1116.41,124.14c0-46.07-33.2-84.02-80.63-84.02s-79.95,37.26-79.95,83.34v.68c0,46.07,33.2,84.02,80.63,84.02s79.95-37.27,79.95-83.34v-.68ZM22.69,196.22c13.54-13.95,29.95-25.04,48.4-32.43,2.02-.81,4.05-1.57,6.09-2.28l5.51-12.98,40.16-94.55.13-.31.13.31,40.16,94.55,5.51,12.98c2.05.7,4.08,1.46,6.1,2.28,18.44,7.39,34.85,18.47,48.39,32.42.86.89,2.31-.1,1.81-1.23L141.63,3.88h-37.27L20.88,194.98c-.49,1.13.95,2.12,1.81,1.23ZM172.41,170c-15.29-6.14-31.96-9.52-49.42-9.52s-34.13,3.38-49.42,9.52c-31.43,12.6-56.96,36.86-71.23,67.41-.83,1.74-1.61,3.52-2.34,5.3h41.29c1.19-1.92,2.46-3.79,3.79-5.62,17.51-24.08,45.91-39.77,77.91-39.77s60.4,15.69,77.91,39.77c1.34,1.83,2.6,3.71,3.79,5.62h41.29c-.74-1.79-1.52-3.56-2.34-5.3-14.27-30.54-39.81-54.81-71.23-67.41Z"/></svg>
+      <p data-i18n="foot.tagline">Research-driven visual technologies engineered around human vision.</p>
+    </div>
+    <div class="foot-col"><h5 data-i18n="foot.col1">Platform</h5><ul>
+      <li><a href="technology.html#metarx" data-i18n="foot.l_metarx">MetaRx™</a></li>
+      <li><a href="technology.html#visual-intelligence" data-i18n="foot.l_vi">Ai+ Visual Intelligence</a></li>
+      <li><a href="technology.html#future-vision" data-i18n="foot.l_fvp">Xr+ Future Vision Platforms</a></li>
+      <li><a href="technology.html" data-i18n="foot.l_tech">Technology</a></li>
+    </ul></div>
+    <div class="foot-col"><h5 data-i18n="foot.col2">Company</h5><ul>
+      <li><a href="research.html" data-i18n="foot.l_research">Research Areas</a></li>
+      <li><a href="about.html" data-i18n="foot.l_about">About</a></li>
+      <li><a href="contact.html" data-i18n="foot.l_contact">Contact</a></li>
+      <li><a href="contact.html" data-i18n="foot.l_partnerships">Partnerships</a></li>
+    </ul></div>
+    <div class="foot-col"><h5 data-i18n="foot.col3">Connect</h5><ul>
+      <li><a href="#" data-i18n="foot.l_linkedin">LinkedIn</a></li>
+      <li><a href="mailto:hello@akesoeyecare.com">hello@akesoeyecare.com</a></li>
+      <li><a href="#" data-i18n="foot.l_press">Press</a></li>
+    </ul></div>
+  </div>
+  <div class="foot-bottom">
+    <span data-i18n="foot.copyright">© 2026 AKESO · All Rights Reserved</span>
+    <div class="right"><a href="#" data-i18n="foot.privacy">Privacy</a><a href="#" data-i18n="foot.terms">Terms</a></div>
+  </div>
+</footer>
+
+<script src="behavior.js"></script>
+<script src="i18n.js"></script>
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Contact — AKESO</title>
+<meta name="description" content="Contact AKESO for enterprise partnerships, research collaborations, manufacturing inquiries, and advanced visual technology discussions." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+.page-hero {
+  padding-top: clamp(80px, 10vw, 120px);
+  padding-bottom: clamp(64px, 8vw, 96px);
+  border-top: 0;
+}
+.page-hero .eyebrow { margin-bottom: 28px; }
+.page-hero h1 {
+  font-size: clamp(40px, 6.5vw, 92px);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+  margin: 0 0 28px;
+  max-width: 18ch;
+}
+.page-hero p {
+  font-size: clamp(17px, 1.35vw, 20px);
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 52ch;
+  margin: 0;
+}
+
+/* ── contact layout ── */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(56px, 8vw, 120px);
+  align-items: start;
+}
+
+/* ── inquiry channels ── */
+.inquiry-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--rule);
+}
+.inquiry-channel {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 24px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+  transition: background 200ms ease;
+}
+.inquiry-channel .ch-idx {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  padding-top: 3px;
+}
+.inquiry-channel .ch-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.inquiry-channel .ch-title {
+  font-size: clamp(16px, 1.3vw, 19px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.inquiry-channel .ch-desc {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink-3);
+  margin: 0;
+}
+
+/* ── contact details ── */
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 5vw, 64px);
+  position: sticky;
+  top: calc(64px + 40px);
+}
+
+.contact-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.contact-block-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.contact-block-value {
+  font-size: clamp(17px, 1.4vw, 21px);
+  color: var(--ink);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: color 200ms ease;
+  display: block;
+}
+a.contact-block-value:hover { color: var(--accent); }
+.contact-block-sub {
+  font-size: 13.5px;
+  color: var(--ink-3);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Social link row */
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: color 200ms ease;
+  letter-spacing: -0.005em;
+}
+.social-link:hover { color: var(--ink); }
+.social-link svg {
+  width: 16px; height: 16px;
+  flex-shrink: 0;
+  color: var(--ink-3);
+  transition: color 200ms ease;
+}
+.social-link:hover svg { color: var(--accent); }
+
+/* ── location ── */
+.location-block {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: clamp(24px, 2.8vw, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.location-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.location-label::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+.location-address {
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+}
+.location-sub {
+  font-size: 12.5px;
+  color: var(--ink-3);
+  margin: 0;
+  font-family: var(--mono);
+  letter-spacing: 0.04em;
+}
+
+/* ── partnership types grid ── */
+.partnership-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.partnership-cell {
+  background: var(--surface);
+  padding: clamp(20px, 2.2vw, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 160px;
+  transition: background 200ms ease;
+}
+.partnership-cell:hover { background: var(--surface-2); }
+.p-idx {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  text-transform: uppercase;
+}
+.p-title {
+  font-size: clamp(14px, 1.2vw, 17px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  line-height: 1.25;
+}
+.p-desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink-3);
+  margin: 0;
+}
+.p-dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin-top: auto;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a class="nav-logo" href="index.html" aria-label="AKESO">
+    <svg viewBox="0 0 1193.28 246.77" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M374.69,107.54l103.32,135.17h-50.82l-80.97-106.71-36.93,37.94v68.77h-41.67V5.57h41.67v119.25L421.78,5.57h51.83l-98.92,101.97ZM544.06,142.09h118.91v-37.6h-118.91v-61.66h134.15V5.57h-175.82v237.14h177.52v-37.27h-135.85v-63.35ZM814.56,105.16c-45.73-10.84-56.57-18.97-56.57-37.27v-.68c0-15.92,14.23-28.12,38.62-28.12,21.68,0,42.68,8.47,64.37,24.39l22.36-31.51c-24.39-19.31-51.16-29.81-86.05-29.81-47.09,0-80.97,28.12-80.97,68.77v.68c0,43.36,28.46,58.95,78.93,70.8,44.04,9.82,53.53,19.65,53.53,36.25v.68c0,17.62-16.26,29.81-42.01,29.81-29.47,0-51.83-10.84-74.87-30.83l-25.07,29.81c28.46,25.75,62.33,37.94,98.92,37.94,49.8,0,84.69-26.09,84.69-70.8v-.68c0-39.64-26.09-56.57-75.89-69.45ZM1160.11,123.46v.68c0,66.4-51.49,122.64-124.33,122.64s-123.65-55.22-123.65-121.96v-.68c0-66.4,51.49-122.64,124.33-122.64s123.65,55.22,123.65,121.96ZM1116.41,124.14c0-46.07-33.2-84.02-80.63-84.02s-79.95,37.26-79.95,83.34v.68c0,46.07,33.2,84.02,80.63,84.02s79.95-37.27,79.95-83.34v-.68ZM22.69,196.22c13.54-13.95,29.95-25.04,48.4-32.43,2.02-.81,4.05-1.57,6.09-2.28l5.51-12.98,40.16-94.55.13-.31.13.31,40.16,94.55,5.51,12.98c2.05.7,4.08,1.46,6.1,2.28,18.44,7.39,34.85,18.47,48.39,32.42.86.89,2.31-.1,1.81-1.23L141.63,3.88h-37.27L20.88,194.98c-.49,1.13.95,2.12,1.81,1.23ZM172.41,170c-15.29-6.14-31.96-9.52-49.42-9.52s-34.13,3.38-49.42,9.52c-31.43,12.6-56.96,36.86-71.23,67.41-.83,1.74-1.61,3.52-2.34,5.3h41.29c1.19-1.92,2.46-3.79,3.79-5.62,17.51-24.08,45.91-39.77,77.91-39.77s60.4,15.69,77.91,39.77c1.34,1.83,2.6,3.71,3.79,5.62h41.29c-.74-1.79-1.52-3.56-2.34-5.3-14.27-30.54-39.81-54.81-71.23-67.41Z"/>
+    </svg>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav.home">Home</a>
+    <a href="technology.html" data-i18n="nav.technology">Technology</a>
+    <a href="research.html" data-i18n="nav.research">Research Areas</a>
+    <a href="about.html" data-i18n="nav.about">About</a>
+    <a href="contact.html" class="active" data-i18n="nav.contact">Contact</a>
+  </div>
+  <div class="nav-right">
+    <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Toggle language">
+      <span class="seg" data-lang="en">EN</span>
+      <span class="seg-sep">/</span>
+      <span class="seg" data-lang="zh">中文</span>
+    </button>
+    <a class="btn btn-primary nav-cta" href="mailto:hello@akesoeyecare.com">
+      <span class="dot"></span>
+      <span data-i18n="nav.partner">Partner With AKESO</span>
+    </a>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- PAGE HERO -->
+<header class="page-hero shell reveal">
+  <div class="eyebrow"><span data-i18n="contact.eyebrow">Contact AKESO</span></div>
+  <h1 data-i18n-html="contact.h1">Get In<br/>Touch.</h1>
+  <p data-i18n="contact.intro">For enterprise partnerships, research collaborations, manufacturing inquiries, and advanced visual technology discussions — reach out directly. We work with teams building the visual layer of what comes next.</p>
+</header>
+
+<!-- MAIN CONTACT LAYOUT -->
+<section class="section shell no-rule" id="contact-main">
+  <div class="contact-layout reveal">
+
+    <!-- Left: inquiry types -->
+    <div>
+      <div class="eyebrow" style="margin-bottom: 32px;">
+        <span data-i18n="contact.inquiries_label">Inquiry Types</span>
+      </div>
+      <div class="inquiry-channels">
+        <div class="inquiry-channel">
+          <span class="ch-idx">01</span>
+          <div class="ch-body">
+            <span class="ch-title" data-i18n="contact.ch1_title">Enterprise Partnership</span>
+            <p class="ch-desc" data-i18n="contact.ch1_desc">Technology licensing, joint development agreements, and B2B integration of AKESO optical and visual intelligence platforms.</p>
+          </div>
+        </div>
+        <div class="inquiry-channel">
+          <span class="ch-idx">02</span>
+          <div class="ch-body">
+            <span class="ch-title" data-i18n="contact.ch2_title">Research Collaboration</span>
+            <p class="ch-desc" data-i18n="contact.ch2_desc">Academic, clinical, and industry research partnerships across optics, computational vision, and human visual systems.</p>
+          </div>
+        </div>
+        <div class="inquiry-channel">
+          <span class="ch-idx">03</span>
+          <div class="ch-body">
+            <span class="ch-title" data-i18n="contact.ch3_title">Manufacturing Inquiry</span>
+            <p class="ch-desc" data-i18n="contact.ch3_desc">Precision optical fabrication, photolithography-based lens production, and advanced manufacturing capability discussions.</p>
+          </div>
+        </div>
+        <div class="inquiry-channel">
+          <span class="ch-idx">04</span>
+          <div class="ch-body">
+            <span class="ch-title" data-i18n="contact.ch4_title">Technology Discussion</span>
+            <p class="ch-desc" data-i18n="contact.ch4_desc">MetaRx™, Ai+, and Xr+ platform capabilities, roadmap alignment, and technical feasibility assessments.</p>
+          </div>
+        </div>
+        <div class="inquiry-channel">
+          <span class="ch-idx">05</span>
+          <div class="ch-body">
+            <span class="ch-title" data-i18n="contact.ch5_title">Media &amp; Press</span>
+            <p class="ch-desc" data-i18n="contact.ch5_desc">Press inquiries, editorial interviews, and media briefings on AKESO research and technology developments.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: contact details -->
+    <div class="contact-details">
+
+      <div class="contact-block">
+        <span class="contact-block-label" data-i18n="contact.email_label">Email</span>
+        <a href="mailto:hello@akesoeyecare.com" class="contact-block-value">hello@akesoeyecare.com</a>
+        <p class="contact-block-sub" data-i18n="contact.email_sub">Direct contact for all inquiry types. We respond within 2 business days.</p>
+      </div>
+
+      <div class="contact-block">
+        <span class="contact-block-label" data-i18n="contact.social_label">Social &amp; Network</span>
+        <div class="social-links">
+          <a href="#" class="social-link">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            <span data-i18n="contact.linkedin">LinkedIn — AKESO</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="location-block">
+        <div class="location-label" data-i18n="contact.hq_label">Headquarters</div>
+        <p class="location-address" data-i18n="contact.hq_address">Beijing, China</p>
+        <p class="location-sub" data-i18n="contact.hq_sub">Global operations across China, India, Singapore &amp; Japan</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERSHIP TYPES -->
+<section class="section shell" id="partnership">
+  <div class="section-head reveal">
+    <div class="meta">
+      <span class="section-index" data-i18n="contact.partner_index">02 — Partnerships</span>
+      <span class="eyebrow no-dot mono" data-i18n="contact.partner_eyebrow">How We Work Together</span>
+    </div>
+    <h2 class="h2" data-i18n="contact.partner_h2">AKESO works with enterprises, research institutions, and technology teams building in the visual technology domain.</h2>
+  </div>
+  <div class="partnership-grid reveal-stagger">
+    <div class="partnership-cell">
+      <span class="p-idx">P / 01</span>
+      <span class="p-title" data-i18n="contact.p1_title">Enterprise Technology Partners</span>
+      <p class="p-desc" data-i18n="contact.p1_desc">Integrating AKESO optical and visual intelligence platforms into existing product development workflows.</p>
+      <div class="p-dot"></div>
+    </div>
+    <div class="partnership-cell">
+      <span class="p-idx">P / 02</span>
+      <span class="p-title" data-i18n="contact.p2_title">Research Institutions</span>
+      <p class="p-desc" data-i18n="contact.p2_desc">Academic and clinical research collaborations in optics, ophthalmology, computational vision, and visual systems.</p>
+      <div class="p-dot"></div>
+    </div>
+    <div class="partnership-cell">
+      <span class="p-idx">P / 03</span>
+      <span class="p-title" data-i18n="contact.p3_title">Manufacturing Partners</span>
+      <p class="p-desc" data-i18n="contact.p3_desc">Precision fabrication partnerships leveraging AKESO's photolithography and optical manufacturing capabilities.</p>
+      <div class="p-dot"></div>
+    </div>
+    <div class="partnership-cell">
+      <span class="p-idx">P / 04</span>
+      <span class="p-title" data-i18n="contact.p4_title">XR &amp; Display Companies</span>
+      <p class="p-desc" data-i18n="contact.p4_desc">Optical architecture and waveguide system development for XR, spatial computing, and next-generation display products.</p>
+      <div class="p-dot"></div>
+    </div>
+    <div class="partnership-cell">
+      <span class="p-idx">P / 05</span>
+      <span class="p-title" data-i18n="contact.p5_title">Healthcare &amp; Clinical Partners</span>
+      <p class="p-desc" data-i18n="contact.p5_desc">Clinical trial partnerships, diagnostic platform development, and medical-grade visual technology validation.</p>
+      <div class="p-dot"></div>
+    </div>
+    <div class="partnership-cell">
+      <span class="p-idx">P / 06</span>
+      <span class="p-title" data-i18n="contact.p6_title">Investment &amp; Strategic Partners</span>
+      <p class="p-desc" data-i18n="contact.p6_desc">Strategic investment conversations, joint venture discussions, and long-horizon technology development partnerships.</p>
+      <div class="p-dot"></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-top">
+    <div class="foot-mark">
+      <svg viewBox="0 0 1193.28 246.77" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M374.69,107.54l103.32,135.17h-50.82l-80.97-106.71-36.93,37.94v68.77h-41.67V5.57h41.67v119.25L421.78,5.57h51.83l-98.92,101.97ZM544.06,142.09h118.91v-37.6h-118.91v-61.66h134.15V5.57h-175.82v237.14h177.52v-37.27h-135.85v-63.35ZM814.56,105.16c-45.73-10.84-56.57-18.97-56.57-37.27v-.68c0-15.92,14.23-28.12,38.62-28.12,21.68,0,42.68,8.47,64.37,24.39l22.36-31.51c-24.39-19.31-51.16-29.81-86.05-29.81-47.09,0-80.97,28.12-80.97,68.77v.68c0,43.36,28.46,58.95,78.93,70.8,44.04,9.82,53.53,19.65,53.53,36.25v.68c0,17.62-16.26,29.81-42.01,29.81-29.47,0-51.83-10.84-74.87-30.83l-25.07,29.81c28.46,25.75,62.33,37.94,98.92,37.94,49.8,0,84.69-26.09,84.69-70.8v-.68c0-39.64-26.09-56.57-75.89-69.45ZM1160.11,123.46v.68c0,66.4-51.49,122.64-124.33,122.64s-123.65-55.22-123.65-121.96v-.68c0-66.4,51.49-122.64,124.33-122.64s123.65,55.22,123.65,121.96ZM1116.41,124.14c0-46.07-33.2-84.02-80.63-84.02s-79.95,37.26-79.95,83.34v.68c0,46.07,33.2,84.02,80.63,84.02s79.95-37.27,79.95-83.34v-.68ZM22.69,196.22c13.54-13.95,29.95-25.04,48.4-32.43,2.02-.81,4.05-1.57,6.09-2.28l5.51-12.98,40.16-94.55.13-.31.13.31,40.16,94.55,5.51,12.98c2.05.7,4.08,1.46,6.1,2.28,18.44,7.39,34.85,18.47,48.39,32.42.86.89,2.31-.1,1.81-1.23L141.63,3.88h-37.27L20.88,194.98c-.49,1.13.95,2.12,1.81,1.23ZM172.41,170c-15.29-6.14-31.96-9.52-49.42-9.52s-34.13,3.38-49.42,9.52c-31.43,12.6-56.96,36.86-71.23,67.41-.83,1.74-1.61,3.52-2.34,5.3h41.29c1.19-1.92,2.46-3.79,3.79-5.62,17.51-24.08,45.91-39.77,77.91-39.77s60.4,15.69,77.91,39.77c1.34,1.83,2.6,3.71,3.79,5.62h41.29c-.74-1.79-1.52-3.56-2.34-5.3-14.27-30.54-39.81-54.81-71.23-67.41Z"/></svg>
+      <p data-i18n="foot.tagline">Research-driven visual technologies engineered around human vision.</p>
+    </div>
+    <div class="foot-col"><h5 data-i18n="foot.col1">Platform</h5><ul>
+      <li><a href="technology.html#metarx" data-i18n="foot.l_metarx">MetaRx™</a></li>
+      <li><a href="technology.html#visual-intelligence" data-i18n="foot.l_vi">Ai+ Visual Intelligence</a></li>
+      <li><a href="technology.html#future-vision" data-i18n="foot.l_fvp">Xr+ Future Vision Platforms</a></li>
+      <li><a href="technology.html" data-i18n="foot.l_tech">Technology</a></li>
+    </ul></div>
+    <div class="foot-col"><h5 data-i18n="foot.col2">Company</h5><ul>
+      <li><a href="research.html" data-i18n="foot.l_research">Research Areas</a></li>
+      <li><a href="about.html" data-i18n="foot.l_about">About</a></li>
+      <li><a href="contact.html" data-i18n="foot.l_contact">Contact</a></li>
+      <li><a href="contact.html" data-i18n="foot.l_partnerships">Partnerships</a></li>
+    </ul></div>
+    <div class="foot-col"><h5 data-i18n="foot.col3">Connect</h5><ul>
+      <li><a href="#" data-i18n="foot.l_linkedin">LinkedIn</a></li>
+      <li><a href="mailto:hello@akesoeyecare.com">hello@akesoeyecare.com</a></li>
+      <li><a href="#" data-i18n="foot.l_press">Press</a></li>
+    </ul></div>
+  </div>
+  <div class="foot-bottom">
+    <span data-i18n="foot.copyright">© 2026 AKESO · All Rights Reserved</span>
+    <div class="right"><a href="#" data-i18n="foot.privacy">Privacy</a><a href="#" data-i18n="foot.terms">Terms</a></div>
+  </div>
+</footer>
+
+<script src="behavior.js"></script>
+<script src="i18n.js"></script>
+</body>
+</html>

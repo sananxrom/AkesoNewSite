@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Research Areas — AKESO</title>
+<meta name="description" content="AKESO research areas — advanced optics, computational optics, precision manufacturing, vision intelligence, XR optical infrastructure, and human vision systems." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+.page-hero {
+  padding-top: clamp(80px, 10vw, 120px);
+  padding-bottom: clamp(64px, 8vw, 96px);
+  border-top: 0;
+}
+.page-hero .eyebrow { margin-bottom: 28px; }
+.page-hero h1 {
+  font-size: clamp(40px, 6.5vw, 92px);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+  margin: 0 0 28px;
+  max-width: 20ch;
+}
+.page-hero p {
+  font-size: clamp(17px, 1.35vw, 20px);
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 52ch;
+  margin: 0;
+}
+
+/* ── discipline modules — full detail ── */
+.discipline {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: clamp(40px, 6vw, 96px);
+  padding-top: var(--pad-y);
+  padding-bottom: var(--pad-y);
+  border-top: 1px solid var(--rule);
+  align-items: start;
+}
+.disc-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: calc(64px + 32px);
+}
+.disc-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  text-transform: uppercase;
+}
+.disc-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.disc-status::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+.disc-h {
+  font-size: clamp(24px, 2.6vw, 36px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.disc-content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 4vw, 48px);
+}
+.disc-visual {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+.disc-visual .corner {
+  position: absolute;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  z-index: 4;
+}
+.disc-visual .corner.tl { top: 16px; left: 16px; display:flex; gap:8px; align-items:center; }
+.disc-visual .corner.tl::before { content:""; width:6px; height:6px; background:var(--accent); border-radius:50%; animation: pulse 2.4s ease-in-out infinite; }
+.disc-visual .corner.br { bottom: 16px; right: 16px; }
+
+.disc-body {
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.65;
+  color: var(--ink-2);
+  margin: 0;
+  max-width: 58ch;
+}
+.disc-areas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.disc-area {
+  background: var(--surface);
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.disc-area .a-idx {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  text-transform: uppercase;
+}
+.disc-area .a-lbl {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.008em;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.disc-area .a-sub {
+  font-size: 12.5px;
+  color: var(--ink-3);
+  line-height: 1.45;
+  margin-top: 2px;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a class="nav-logo" href="index.html" aria-label="AKESO">
+    <svg viewBox="0 0 1193.28 246.77" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M374.69,107.54l103.32,135.17h-50.82l-80.97-106.71-36.93,37.94v68.77h-41.67V5.57h41.67v119.25L421.78,5.57h51.83l-98.92,101.97ZM544.06,142.09h118.91v-37.6h-118.91v-61.66h134.15V5.57h-175.82v237.14h177.52v-37.27h-135.85v-63.35ZM814.56,105.16c-45.73-10.84-56.57-18.97-56.57-37.27v-.68c0-15.92,14.23-28.12,38.62-28.12,21.68,0,42.68,8.47,64.37,24.39l22.36-31.51c-24.39-19.31-51.16-29.81-86.05-29.81-47.09,0-80.97,28.12-80.97,68.77v.68c0,43.36,28.46,58.95,78.93,70.8,44.04,9.82,53.53,19.65,53.53,36.25v.68c0,17.62-16.26,29.81-42.01,29.81-29.47,0-51.83-10.84-74.87-30.83l-25.07,29.81c28.46,25.75,62.33,37.94,98.92,37.94,49.8,0,84.69-26.09,84.69-70.8v-.68c0-39.64-26.09-56.57-75.89-69.45ZM1160.11,123.46v.68c0,66.4-51.49,122.64-124.33,122.64s-123.65-55.22-123.65-121.96v-.68c0-66.4,51.49-122.64,124.33-122.64s123.65,55.22,123.65,121.96ZM1116.41,124.14c0-46.07-33.2-84.02-80.63-84.02s-79.95,37.26-79.95,83.34v.68c0,46.07,33.2,84.02,80.63,84.02s79.95-37.27,79.95-83.34v-.68ZM22.69,196.22c13.54-13.95,29.95-25.04,48.4-32.43,2.02-.81,4.05-1.57,6.09-2.28l5.51-12.98,40.16-94.55.13-.31.13.31,40.16,94.55,5.51,12.98c2.05.7,4.08,1.46,6.1,2.28,18.44,7.39,34.85,18.47,48.39,32.42.86.89,2.31-.1,1.81-1.23L141.63,3.88h-37.27L20.88,194.98c-.49,1.13.95,2.12,1.81,1.23ZM172.41,170c-15.29-6.14-31.96-9.52-49.42-9.52s-34.13,3.38-49.42,9.52c-31.43,12.6-56.96,36.86-71.23,67.41-.83,1.74-1.61,3.52-2.34,5.3h41.29c1.19-1.92,2.46-3.79,3.79-5.62,17.51-24.08,45.91-39.77,77.91-39.77s60.4,15.69,77.91,39.77c1.34,1.83,2.6,3.71,3.79,5.62h41.29c-.74-1.79-1.52-3.56-2.34-5.3-14.27-30.54-39.81-54.81-71.23-67.41Z"/>
+    </svg>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav.home">Home</a>
+    <a href="technology.html" data-i18n="nav.technology">Technology</a>
+    <a href="research.html" class="active" data-i18n="nav.research">Research Areas</a>
+    <a href="about.html" data-i18n="nav.about">About</a>
+    <a href="contact.html" data-i18n="nav.contact">Contact</a>
+  </div>
+  <div class="nav-right">
+    <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Toggle language">
+      <span class="seg" data-lang="en">EN</span>
+      <span class="seg-sep">/</span>
+      <span class="seg" data-lang="zh">中文</span>
+    </button>
+    <a class="btn btn-primary nav-cta" href="contact.html">
+      <span class="dot"></span>
+      <span data-i18n="nav.partner">Partner With AKESO</span>
+    </a>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- PAGE HERO -->
+<header class="page-hero shell reveal">
+  <div class="eyebrow">
+    <span data-i18n="res.eyebrow">Research Areas</span>
+  </div>
+  <h1 data-i18n-html="res.h1">Six Active<br/>Research Disciplines.</h1>
+  <p data-i18n="res.intro">AKESO operates across multiple areas of visual technology research — combining optics, computational systems, precision engineering, and human vision science. Each discipline is active, interconnected, and grounded in ophthalmic understanding.</p>
+</header>
+
+<!-- R01 ADVANCED OPTICS -->
+<section class="shell" id="advanced-optics">
+  <div class="discipline reveal">
+    <div class="disc-meta">
+      <span class="disc-num">R / 01</span>
+      <div class="disc-status" data-i18n="res.status_active">Active</div>
+      <h2 class="disc-h" data-i18n="res.r1_title">Advanced Optics</h2>
+    </div>
+    <div class="disc-content">
+      <div class="disc-visual">
+        <span class="corner tl" data-i18n="res.r1_signal">Advanced Optics · Precision Lens Systems</span>
+        <span class="corner br">R / 01 · ISO 10110</span>
+        <svg viewBox="0 0 960 280" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block;position:absolute;inset:0">
+          <g stroke="oklch(0.50 0.005 70 / 0.07)" stroke-width="0.5" fill="none">
+            <line x1="0" y1="70" x2="960" y2="70"/><line x1="0" y1="140" x2="960" y2="140"/><line x1="0" y1="210" x2="960" y2="210"/>
+            <line x1="240" y1="0" x2="240" y2="280"/><line x1="480" y1="0" x2="480" y2="280"/><line x1="720" y1="0" x2="720" y2="280"/>
+          </g>
+          <g stroke="oklch(0.45 0.005 70 / 0.5)" stroke-width="0.7" fill="none">
+            <path d="M 180 140 Q 480 20 780 140 Q 480 260 180 140 Z"/>
+            <path d="M 240 140 Q 480 50 720 140 Q 480 230 240 140 Z"/>
+            <path d="M 300 140 Q 480 80 660 140 Q 480 200 300 140 Z"/>
+            <path d="M 360 140 Q 480 110 600 140 Q 480 170 360 140 Z"/>
+          </g>
+          <line x1="60" y1="140" x2="900" y2="140" stroke="oklch(0.45 0.005 70 / 0.3)" stroke-width="0.6" stroke-dasharray="4,4"/>
+          <circle cx="480" cy="140" r="5" fill="oklch(var(--accent-l) var(--accent-c) var(--accent-h))"/>
+          <g stroke="oklch(0.45 0.005 70 / 0.3)" stroke-width="0.5">
+            <line x1="180" y1="120" x2="180" y2="160"/><line x1="780" y1="120" x2="780" y2="160"/><line x1="480" y1="118" x2="480" y2="128"/>
+          </g>
+          <g font-family="Geist Mono, monospace" font-size="9" fill="oklch(0.45 0.005 70 / 0.65)" letter-spacing="0.5">
+            <text x="20" y="264">ADVANCED OPTICS · LENS CROSS-SECTION ARRAY · PRECISION OPTICAL ENGINEERING</text>
+          </g>
+        </svg>
+      </div>
+      <p class="disc-body" data-i18n="res.r1_body">Precision lens systems, optical engineering, and nano-scale visual technologies represent the foundational layer of AKESO's research. Work in this area spans from classical optical system design to advanced computational approaches — producing optical systems that perform with higher fidelity to human visual requirements than conventional engineering allows.</p>
+      <div class="disc-areas">
+        <div class="disc-area"><span class="a-idx">A / 01</span><span class="a-lbl" data-i18n="res.r1_a1">Precision Lens Engineering</span><span class="a-sub" data-i18n="res.r1_a1s">High-accuracy optical system design and fabrication</span></div>
+        <div class="disc-area"><span class="a-idx">A / 02</span><span class="a-lbl" data-i18n="res.r1_a2">Nano-Scale Optical Structures</span><span class="a-sub" data-i18n="res.r1_a2s">Sub-wavelength patterning and metasurface design</span></div>
+        <div class="disc-area"><span class="a-idx">A / 03</span><span class="a-lbl" data-i18n="res.r1_a3">Visual Optimization Systems</span><span class="a-sub" data-i18n="res.r1_a3s">Performance-driven optical system tuning</span></div>
+        <div class="disc-area"><span class="a-idx">A / 04</span><span class="a-lbl" data-i18n="res.r1_a4">Ophthalmic Optical Engineering</span><span class="a-sub" data-i18n="res.r1_a4s">Lens systems designed around clinical vision science</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- R02 COMPUTATIONAL OPTICS -->
+<section class="shell" id="computational-optics">
+  <div class="discipline reveal">
+    <div class="disc-meta">
+      <span class="disc-num">R / 02</span>
+      <div class="disc-status" data-i18n="res.status_active">Active</div>
+      <h2 class="disc-h" data-i18n="res.r2_title">Computational Optics</h2>
+    </div>
+    <div class="disc-content">
+      <div class="disc-visual">
+        <span class="corner tl" data-i18n="res.r2_signal">Computational Optics · Wavefront Analysis</span>
+        <span class="corner br">R / 02 · λ 550nm</span>
+        <svg viewBox="0 0 960 280" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block;position:absolute;inset:0">
+          <g stroke="oklch(0.50 0.005 70 / 0.07)" stroke-width="0.5" fill="none">
+            <line x1="0" y1="70" x2="960" y2="70"/><line x1="0" y1="140" x2="960" y2="140"/><line x1="0" y1="210" x2="960" y2="210"/>
+            <line x1="240" y1="0" x2="240" y2="280"/><line x1="480" y1="0" x2="480" y2="280"/><line x1="720" y1="0" x2="720" y2="280"/>
+          </g>
+          <!-- wavefront simulation -->
+          <g stroke="oklch(0.45 0.005 70 / 0.45)" stroke-width="0.7" fill="none">
+            <path d="M 80,140 C 160,80 240,200 320,140 C 400,80 480,200 560,140 C 640,80 720,200 800,140 C 840,110 880,130 920,120"/>
+            <path d="M 80,140 C 160,70 240,210 320,140 C 400,70 480,210 560,140 C 640,70 720,210 800,140" opacity="0.6"/>
+            <path d="M 80,140 C 160,90 240,190 320,140 C 400,90 480,190 560,140 C 640,90 720,190 800,140" opacity="0.4"/>
+          </g>
+          <!-- ideal wavefront -->
+          <line x1="60" y1="140" x2="900" y2="140" stroke="oklch(var(--accent-l) var(--accent-c) var(--accent-h) / 0.6)" stroke-width="0.8" stroke-dasharray="6,3"/>
+          <!-- nodes -->
+          <g fill="oklch(0.45 0.005 70 / 0.5)">
+            <circle cx="320" cy="140" r="3"/><circle cx="480" cy="140" r="3"/><circle cx="640" cy="140" r="3"/>
+          </g>
+          <circle cx="800" cy="140" r="4" fill="oklch(var(--accent-l) var(--accent-c) var(--accent-h))"/>
+          <g font-family="Geist Mono, monospace" font-size="9" fill="oklch(0.45 0.005 70 / 0.65)" letter-spacing="0.5">
+            <text x="20" y="264">COMPUTATIONAL OPTICS · WAVEFRONT RECONSTRUCTION · OPD MAP</text>
+          </g>
+        </svg>
+      </div>
+      <p class="disc-body" data-i18n="res.r2_body">Computational optics at AKESO combines optical behavior modeling, intelligent system optimization, and software-driven visual performance enhancement. This discipline bridges physical optics and intelligent systems — enabling optical architectures that adapt to individual visual profiles, environmental conditions, and performance requirements that static optical design cannot address.</p>
+      <div class="disc-areas">
+        <div class="disc-area"><span class="a-idx">A / 01</span><span class="a-lbl" data-i18n="res.r2_a1">Wavefront Analysis &amp; Modeling</span><span class="a-sub" data-i18n="res.r2_a1s">Phase reconstruction and aberration mapping</span></div>
+        <div class="disc-area"><span class="a-idx">A / 02</span><span class="a-lbl" data-i18n="res.r2_a2">Intelligent Optical Architectures</span><span class="a-sub" data-i18n="res.r2_a2s">Software-adaptive lens and display systems</span></div>
+        <div class="disc-area"><span class="a-idx">A / 03</span><span class="a-lbl" data-i18n="res.r2_a3">Visual Optimization Algorithms</span><span class="a-sub" data-i18n="res.r2_a3s">Perceptually-driven optical performance tuning</span></div>
+        <div class="disc-area"><span class="a-idx">A / 04</span><span class="a-lbl" data-i18n="res.r2_a4">Optical Simulation Systems</span><span class="a-sub" data-i18n="res.r2_a4s">High-fidelity modeling of complex optical behavior</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- R03 PRECISION MANUFACTURING -->
+<section class="shell" id="precision-manufacturing">
+  <div class="discipline reveal">
+    <div class="disc-meta">
+      <span class="disc-num">R / 03</span>
+      <div class="disc-status" data-i18n="res.status_active">Active</div>
+      <h2 class="disc-h" data-i18n="res.r3_title">Precision Manufacturing</h2>
+    </div>
+    <div class="disc-content">
+      <div class="disc-visual">
+        <span class="corner tl" data-i18n="res.r3_signal">Precision Manufacturing · Lithography Process</span>
+        <span class="corner br">R / 03 · ±0.1µm</span>
+        <svg viewBox="0 0 960 280" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block;position:absolute;inset:0">
+          <g stroke="oklch(0.50 0.005 70 / 0.07)" stroke-width="0.5" fill="none">
+            <line x1="0" y1="70" x2="960" y2="70"/><line x1="0" y1="140" x2="960" y2="140"/><line x1="0" y1="210" x2="960" y2="210"/>
+            <line x1="240" y1="0" x2="240" y2="280"/><line x1="480" y1="0" x2="480" y2="280"/><line x1="720" y1="0" x2="720" y2="280"/>
+          </g>
+          <!-- litho layers -->
+          <g stroke="oklch(0.45 0.005 70 / 0.5)" stroke-width="0.7" fill="oklch(0.94 0.006 75 / 0.4)">
+            <rect x="100" y="60" width="760" height="28" rx="1"/>
+            <rect x="100" y="96" width="760" height="28" rx="1"/>
+            <rect x="100" y="132" width="760" height="28" rx="1"/>
+            <rect x="100" y="168" width="760" height="28" rx="1"/>
+            <rect x="100" y="204" width="760" height="28" rx="1"/>
+          </g>
+          <!-- exposure zones -->
+          <g fill="oklch(var(--accent-l) var(--accent-c) var(--accent-h) / 0.25)" stroke="none">
+            <rect x="220" y="60" width="40" height="28"/>
+            <rect x="380" y="96" width="40" height="28"/>
+            <rect x="540" y="132" width="40" height="28"/>
+            <rect x="460" y="168" width="40" height="28"/>
+            <rect x="300" y="204" width="40" height="28"/>
+          </g>
+          <!-- beam indicator -->
+          <line x1="480" y1="20" x2="480" y2="60" stroke="oklch(var(--accent-l) var(--accent-c) var(--accent-h) / 0.7)" stroke-width="1.2"/>
+          <circle cx="480" cy="20" r="4" fill="oklch(var(--accent-l) var(--accent-c) var(--accent-h))"/>
+          <g font-family="Geist Mono, monospace" font-size="9" fill="oklch(0.45 0.005 70 / 0.65)" letter-spacing="0.5">
+            <text x="20" y="264">PRECISION MANUFACTURING · PHOTOLITHOGRAPHY STACK · SEMICONDUCTOR-GRADE</text>
+          </g>
+        </svg>
+      </div>
+      <p class="disc-body" data-i18n="res.r3_body">AKESO's precision manufacturing research draws on semiconductor-grade photolithography techniques applied to optical fabrication — a core differentiator enabling the production of lens structures at resolutions and tolerances not achievable through conventional optical manufacturing processes. The company's MetaRx™ lithography platform represents the commercial output of this research area.</p>
+      <div class="disc-areas">
+        <div class="disc-area"><span class="a-idx">A / 01</span><span class="a-lbl" data-i18n="res.r3_a1">Photolithography for Optics</span><span class="a-sub" data-i18n="res.r3_a1s">Semiconductor-grade processes applied to lens fabrication</span></div>
+        <div class="disc-area"><span class="a-idx">A / 02</span><span class="a-lbl" data-i18n="res.r3_a2">Advanced Fabrication Workflows</span><span class="a-sub" data-i18n="res.r3_a2s">High-accuracy, research-led manufacturing pipelines</span></div>
+        <div class="disc-area"><span class="a-idx">A / 03</span><span class="a-lbl" data-i18n="res.r3_a3">Nano-Structure Production</span><span class="a-sub" data-i18n="res.r3_a3s">Sub-micron patterning of optical surfaces</span></div>
+        <div class="disc-area"><span class="a-idx">A / 04</span><span class="a-lbl" data-i18n="res.r3_a4">Quality &amp; Metrology Systems</span><span class="a-sub" data-i18n="res.r3_a4s">Precision measurement and process verification</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- R04 VISION INTELLIGENCE -->
+<section class="shell" id="vision-intelligence">
+  <div class="discipline reveal">
+    <div class="disc-meta">
+      <span class="disc-num">R / 04</span>
+      <div class="disc-status" data-i18n="res.status_active">Active</div>
+      <h2 class="disc-h" data-i18n="res.r4_title">Vision Intelligence</h2>
+    </div>
+    <div class="disc-content">
+      <div class="disc-visual">
+        <span class="corner tl" data-i18n="res.r4_signal">Vision Intelligence · Gaze Mapping</span>
+        <span class="corner br">R / 04 · 120Hz</span>
+        <svg viewBox="0 0 960 280" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block;position:absolute;inset:0">
+          <g stroke="oklch(0.50 0.005 70 / 0.07)" stroke-width="0.5" fill="none">
+            <line x1="0" y1="70" x2="960" y2="70"/><line x1="0" y1="140" x2="960" y2="140"/><line x1="0" y1="210" x2="960" y2="210"/>
+            <line x1="240" y1="0" x2="240" y2="280"/><line x1="480" y1="0" x2="480" y2="280"/><line x1="720" y1="0" x2="720" y2="280"/>
+          </g>
+          <!-- scanpath visualization -->
+          <g fill="none" stroke="oklch(0.45 0.005 70 / 0.3)" stroke-width="0.6">
+            <path d="M 200,100 L 350,80 L 500,160 L 650,90 L 750,170 L 600,200 L 400,180 L 250,220"/>
+          </g>
+          <!-- fixation points -->
+          <g fill="oklch(0.45 0.005 70 / 0.4)" stroke="none">
+            <circle cx="200" cy="100" r="12"/><circle cx="350" cy="80" r="8"/>
+            <circle cx="650" cy="90" r="10"/><circle cx="750" cy="170" r="6"/>
+            <circle cx="400" cy="180" r="9"/>
+          </g>
+          <!-- primary fixation -->
+          <circle cx="500" cy="160" r="16" fill="oklch(var(--accent-l) var(--accent-c) var(--accent-h) / 0.2)" stroke="oklch(var(--accent-l) var(--accent-c) var(--accent-h) / 0.7)" stroke-width="1"/>
+          <circle cx="500" cy="160" r="5" fill="oklch(var(--accent-l) var(--accent-c) var(--accent-h))"/>
+          <g font-family="Geist Mono, monospace" font-size="9" fill="oklch(0.45 0.005 70 / 0.65)" letter-spacing="0.5">
+            <text x="20" y="264">VISION INTELLIGENCE · SCANPATH + FIXATION DENSITY · GAZE ANALYSIS SYSTEM</text>
+          </g>
+        </svg>
+      </div>
+      <p class="disc-body" data-i18n="res.r4_body">Machine vision systems, eye tracking, and visual analysis technologies combine to form AKESO's vision intelligence research area. Work here spans from hardware-level sensor systems to algorithms that interpret and respond to human gaze — enabling applications in diagnostics, visual interface design, and intelligent systems that adapt in real time to where and how a person is looking.</p>
+      <div class="disc-areas">
+        <div class="disc-area"><span class="a-idx">A / 01</span><span class="a-lbl" data-i18n="res.r4_a1">Eye Tracking Systems</span><span class="a-sub" data-i18n="res.r4_a1s">High-frequency gaze estimation and fixation analysis</span></div>
+        <div class="disc-area"><span class="a-idx">A / 02</span><span class="a-lbl" data-i18n="res.r4_a2">Camera-Based Diagnostics</span><span class="a-sub" data-i18n="res.r4_a2s">Non-invasive visual health assessment systems</span></div>
+        <div class="disc-area"><span class="a-idx">A / 03</span><span class="a-lbl" data-i18n="res.r4_a3">Machine Vision Integration</span><span class="a-sub" data-i18n="res.r4_a3s">Computer vision systems for optical and medical contexts</span></div>
+        <div class="disc-area"><span class="a-idx">A / 04</span><span class="a-lbl" data-i18n="res.r4_a4">Adaptive Visual Interfaces</span><span class="a-sub" data-i18n="res.r4_a4s">Gaze-responsive display and interaction systems</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- R05 XR OPTICAL INFRASTRUCTURE -->
+<section class="shell" id="xr-optics">
+  <div class="discipline reveal">
+    <div class="disc-meta">
+      <span class="disc-num">R / 05</span>
+      <div class="disc-status" data-i18n="res.status_active">Active</div>
+      <h2 class="disc-h" data-i18n="res.r5_title">XR Optical Infrastructure</h2>
+    </div>
+    <div class="disc-content">
+      <div class="disc-visual">
+        <span class="corner tl" data-i18n="res.r5_signal">XR Optical Infrastructure · Waveguide Stack</span>
+        <span class="corner br">R / 05 · FOV 110°</span>
+        <svg viewBox="0 0 960 280" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block;position:absolute;inset:0">
+          <g stroke="oklch(0.50 0.005 70 / 0.07)" stroke-width="0.5" fill="none">
+            <line x1="0" y1="70" x2="960" y2="70"/><line x1="0" y1="140" x2="960" y2="140"/><line x1="0" y1="210" x2="960" y2="210"/>
+            <line x1="240" y1="0" x2="240" y2="280"/><line x1="480" y1="0" x2="480" y2="280"/><line x1="720" y1="0" x2="720" y2="280"/>
+          </g>
+          <!-- FOV cone -->
+          <g stroke="oklch(0.48 0.005 70 / 0.2)" stroke-width="0.6" fill="oklch(0.94 0.006 75 / 0.12)">
+            <path d="M 100,140 L 860,50 L 860,230 Z"/>
+          </g>
+          <!-- waveguide layers -->
+          <g stroke="oklch(0.45 0.005 70 / 0.55)" stroke-width="0.8" fill="none">
+            <rect x="80" y="80" width="140" height="22" rx="1"/>
+            <rect x="80" y="110" width="140" height="22" rx="1"/>
+            <rect x="80" y="140" width="140" height="22" rx="1"/>
+            <rect x="80" y="170" width="140" height="22" rx="1"/>
+          </g>
+          <!-- coupling beams -->
+          <g stroke="oklch(var(--accent-l) var(--accent-c) var(--accent-h) / 0.6)" stroke-width="0.8" fill="none">
+            <path d="M 220,91 Q 400,91 600,140"/>
+            <path d="M 220,121 Q 400,121 650,140"/>
+            <path d="M 220,151 Q 400,151 700,140"/>
+            <path d="M 220,181 Q 400,181 750,140"/>
+          </g>
+          <!-- exit pupil -->
+          <circle cx="860" cy="140" r="18" fill="none" stroke="oklch(0.45 0.005 70 / 0.4)" stroke-width="0.8"/>
+          <circle cx="860" cy="140" r="5" fill="oklch(var(--accent-l) var(--accent-c) var(--accent-h))"/>
+          <g font-family="Geist Mono, monospace" font-size="9" fill="oklch(0.45 0.005 70 / 0.65)" letter-spacing="0.5">
+            <text x="20" y="264">XR OPTICAL INFRASTRUCTURE · WAVEGUIDE + FOV · EXIT PUPIL GEOMETRY</text>
+          </g>
+        </svg>
+      </div>
+      <p class="disc-body" data-i18n="res.r5_body">Optical systems and visual architectures supporting future immersive technologies represent a forward-looking but technically grounded research area for AKESO. Work encompasses waveguide optics, display coupling systems, and the visual infrastructure that will underpin the next generation of spatial and mixed-reality visual experiences — developed with visual comfort and long-duration usability as primary design criteria.</p>
+      <div class="disc-areas">
+        <div class="disc-area"><span class="a-idx">A / 01</span><span class="a-lbl" data-i18n="res.r5_a1">Waveguide Optical Systems</span><span class="a-sub" data-i18n="res.r5_a1s">Thin-form light coupling and propagation structures</span></div>
+        <div class="disc-area"><span class="a-idx">A / 02</span><span class="a-lbl" data-i18n="res.r5_a2">Far-Focus Visual Architectures</span><span class="a-sub" data-i18n="res.r5_a2s">Display systems that support natural focal depth</span></div>
+        <div class="disc-area"><span class="a-idx">A / 03</span><span class="a-lbl" data-i18n="res.r5_a3">Immersive Display Optics</span><span class="a-sub" data-i18n="res.r5_a3s">Wide field-of-view, high-resolution optical systems</span></div>
+        <div class="disc-area"><span class="a-idx">A / 04</span><span class="a-lbl" data-i18n="res.r5_a4">Myopia Prevention Systems</span><span class="a-sub" data-i18n="res.r5_a4s">Display architectures clinically designed to prevent myopia</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- R06 HUMAN VISION SYSTEMS -->
+<section class="shell" id="human-vision">
+  <div class="discipline reveal">
+    <div class="disc-meta">
+      <span class="disc-num">R / 06</span>
+      <div class="disc-status" data-i18n="res.status_active">Active</div>
+      <h2 class="disc-h" data-i18n="res.r6_title">Human Vision Systems</h2>
+    </div>
+    <div class="disc-content">
+      <div class="disc-visual">
+        <span class="corner tl" data-i18n="res.r6_signal">Human Vision Systems · Ophthalmic Model</span>
+        <span class="corner br">R / 06 · REF A-OCT</span>
+        <svg viewBox="0 0 960 280" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block;position:absolute;inset:0">
+          <g stroke="oklch(0.50 0.005 70 / 0.07)" stroke-width="0.5" fill="none">
+            <line x1="0" y1="70" x2="960" y2="70"/><line x1="0" y1="140" x2="960" y2="140"/><line x1="0" y1="210" x2="960" y2="210"/>
+            <line x1="240" y1="0" x2="240" y2="280"/><line x1="480" y1="0" x2="480" y2="280"/><line x1="720" y1="0" x2="720" y2="280"/>
+          </g>
+          <!-- schematic eye cross section -->
+          <g stroke="oklch(0.45 0.005 70 / 0.5)" stroke-width="0.7" fill="none">
+            <ellipse cx="440" cy="140" rx="180" ry="110"/>
+            <ellipse cx="440" cy="140" rx="140" ry="85"/>
+            <!-- cornea front -->
+            <path d="M 260,140 Q 275,90 300,75"/>
+            <path d="M 260,140 Q 275,190 300,205"/>
+            <!-- lens -->
+            <path d="M 370,105 Q 390,140 370,175"/>
+            <path d="M 400,100 Q 385,140 400,180"/>
+          </g>
+          <!-- pupil -->
+          <circle cx="335" cy="140" r="20" fill="oklch(0.18 0.004 70)"/>
+          <circle cx="329" cy="133" r="5" fill="oklch(0.90 0.005 70 / 0.4)"/>
+          <!-- fovea -->
+          <circle cx="580" cy="140" r="7" fill="oklch(var(--accent-l) var(--accent-c) var(--accent-h) / 0.6)"/>
+          <circle cx="580" cy="140" r="16" fill="none" stroke="oklch(var(--accent-l) var(--accent-c) var(--accent-h) / 0.35)" stroke-width="0.8"/>
+          <!-- optical axis -->
+          <line x1="80" y1="140" x2="260" y2="140" stroke="oklch(0.45 0.005 70 / 0.3)" stroke-width="0.6" stroke-dasharray="3,3"/>
+          <line x1="335" y1="140" x2="580" y2="140" stroke="oklch(0.45 0.005 70 / 0.25)" stroke-width="0.5" stroke-dasharray="3,3"/>
+          <g font-family="Geist Mono, monospace" font-size="9" fill="oklch(0.45 0.005 70 / 0.65)" letter-spacing="0.5">
+            <text x="20" y="264">HUMAN VISION SYSTEMS · SCHEMATIC EYE MODEL · OPHTHALMIC REFERENCE</text>
+            <text x="440" y="158" font-size="8" fill="oklch(var(--accent-l) var(--accent-c) var(--accent-h) / 0.7)" text-anchor="middle">FOVEA</text>
+          </g>
+        </svg>
+      </div>
+      <p class="disc-body" data-i18n="res.r6_body">Human vision research combines ophthalmology, optics, and the science of visual behavior — forming the foundational knowledge base from which all other AKESO research disciplines draw. This is the starting point: a rigorous understanding of how human eyes function, how they fail, how they adapt, and how visual technology can be engineered to work in alignment with — rather than in spite of — their biology.</p>
+      <div class="disc-areas">
+        <div class="disc-area"><span class="a-idx">A / 01</span><span class="a-lbl" data-i18n="res.r6_a1">Ophthalmic Research</span><span class="a-sub" data-i18n="res.r6_a1s">Clinical foundations of visual technology development</span></div>
+        <div class="disc-area"><span class="a-idx">A / 02</span><span class="a-lbl" data-i18n="res.r6_a2">Visual Behavior Modeling</span><span class="a-sub" data-i18n="res.r6_a2s">How humans see, adapt, and respond to visual environments</span></div>
+        <div class="disc-area"><span class="a-idx">A / 03</span><span class="a-lbl" data-i18n="res.r6_a3">Myopia &amp; Visual Health</span><span class="a-sub" data-i18n="res.r6_a3s">Research into myopia progression and prevention mechanisms</span></div>
+        <div class="disc-area"><span class="a-idx">A / 04</span><span class="a-lbl" data-i18n="res.r6_a4">Visual Comfort Science</span><span class="a-sub" data-i18n="res.r6_a4s">Long-duration visual interaction and fatigue research</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta shell">
+  <div class="reveal" style="display:flex;flex-direction:column;align-items:center;gap:32px;">
+    <span class="eyebrow no-dot mono" data-i18n="sec7.eyebrow">/ Get In Touch</span>
+    <h2 data-i18n="sec7.h2">Collaborate with AKESO.</h2>
+    <p data-i18n="sec7.p">For enterprise partnerships, research collaborations, and advanced visual technology initiatives — we work with teams building the visual layer of what comes next.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="contact.html">
+        <span class="dot"></span>
+        <span data-i18n="sec7.cta_partner">Partner With AKESO</span>
+        <svg class="arrow" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 1l4 4-4 4M1 5h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="contact.html">
+        <span data-i18n="sec7.cta_contact">Contact Research Team</span>
+        <svg class="arrow" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 1l4 4-4 4M1 5h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-top">
+    <div class="foot-mark">
+      <svg viewBox="0 0 1193.28 246.77" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M374.69,107.54l103.32,135.17h-50.82l-80.97-106.71-36.93,37.94v68.77h-41.67V5.57h41.67v119.25L421.78,5.57h51.83l-98.92,101.97ZM544.06,142.09h118.91v-37.6h-118.91v-61.66h134.15V5.57h-175.82v237.14h177.52v-37.27h-135.85v-63.35ZM814.56,105.16c-45.73-10.84-56.57-18.97-56.57-37.27v-.68c0-15.92,14.23-28.12,38.62-28.12,21.68,0,42.68,8.47,64.37,24.39l22.36-31.51c-24.39-19.31-51.16-29.81-86.05-29.81-47.09,0-80.97,28.12-80.97,68.77v.68c0,43.36,28.46,58.95,78.93,70.8,44.04,9.82,53.53,19.65,53.53,36.25v.68c0,17.62-16.26,29.81-42.01,29.81-29.47,0-51.83-10.84-74.87-30.83l-25.07,29.81c28.46,25.75,62.33,37.94,98.92,37.94,49.8,0,84.69-26.09,84.69-70.8v-.68c0-39.64-26.09-56.57-75.89-69.45ZM1160.11,123.46v.68c0,66.4-51.49,122.64-124.33,122.64s-123.65-55.22-123.65-121.96v-.68c0-66.4,51.49-122.64,124.33-122.64s123.65,55.22,123.65,121.96ZM1116.41,124.14c0-46.07-33.2-84.02-80.63-84.02s-79.95,37.26-79.95,83.34v.68c0,46.07,33.2,84.02,80.63,84.02s79.95-37.27,79.95-83.34v-.68ZM22.69,196.22c13.54-13.95,29.95-25.04,48.4-32.43,2.02-.81,4.05-1.57,6.09-2.28l5.51-12.98,40.16-94.55.13-.31.13.31,40.16,94.55,5.51,12.98c2.05.7,4.08,1.46,6.1,2.28,18.44,7.39,34.85,18.47,48.39,32.42.86.89,2.31-.1,1.81-1.23L141.63,3.88h-37.27L20.88,194.98c-.49,1.13.95,2.12,1.81,1.23ZM172.41,170c-15.29-6.14-31.96-9.52-49.42-9.52s-34.13,3.38-49.42,9.52c-31.43,12.6-56.96,36.86-71.23,67.41-.83,1.74-1.61,3.52-2.34,5.3h41.29c1.19-1.92,2.46-3.79,3.79-5.62,17.51-24.08,45.91-39.77,77.91-39.77s60.4,15.69,77.91,39.77c1.34,1.83,2.6,3.71,3.79,5.62h41.29c-.74-1.79-1.52-3.56-2.34-5.3-14.27-30.54-39.81-54.81-71.23-67.41Z"/></svg>
+      <p data-i18n="foot.tagline">Research-driven visual technologies engineered around human vision.</p>
+    </div>
+    <div class="foot-col"><h5 data-i18n="foot.col1">Platform</h5><ul>
+      <li><a href="technology.html#metarx" data-i18n="foot.l_metarx">MetaRx™</a></li>
+      <li><a href="technology.html#visual-intelligence" data-i18n="foot.l_vi">Ai+ Visual Intelligence</a></li>
+      <li><a href="technology.html#future-vision" data-i18n="foot.l_fvp">Xr+ Future Vision Platforms</a></li>
+      <li><a href="technology.html" data-i18n="foot.l_tech">Technology</a></li>
+    </ul></div>
+    <div class="foot-col"><h5 data-i18n="foot.col2">Company</h5><ul>
+      <li><a href="research.html" data-i18n="foot.l_research">Research Areas</a></li>
+      <li><a href="about.html" data-i18n="foot.l_about">About</a></li>
+      <li><a href="contact.html" data-i18n="foot.l_contact">Contact</a></li>
+      <li><a href="contact.html" data-i18n="foot.l_partnerships">Partnerships</a></li>
+    </ul></div>
+    <div class="foot-col"><h5 data-i18n="foot.col3">Connect</h5><ul>
+      <li><a href="#" data-i18n="foot.l_linkedin">LinkedIn</a></li>
+      <li><a href="mailto:hello@akesoeyecare.com">hello@akesoeyecare.com</a></li>
+      <li><a href="#" data-i18n="foot.l_press">Press</a></li>
+    </ul></div>
+  </div>
+  <div class="foot-bottom">
+    <span data-i18n="foot.copyright">© 2026 AKESO · All Rights Reserved</span>
+    <div class="right"><a href="#" data-i18n="foot.privacy">Privacy</a><a href="#" data-i18n="foot.terms">Terms</a></div>
+  </div>
+</footer>
+
+<script src="behavior.js"></script>
+<script src="i18n.js"></script>
+</body>
+</html>
