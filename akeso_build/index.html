@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>document.documentElement.classList.add("ready")</script>
 <style>html{visibility:hidden}html.ready{visibility:visible}</style>
 </head>
 <body>
@@ -41,7 +42,7 @@
 
 <!-- HERO -->
 <header class="hero shell">
-  <div class="hero-left reveal">
+  <div class="hero-left">
     <div>
       <div class="hero-eyebrow"><span class="tick"></span><span data-i18n="hero.eyebrow">AKESO — Vision Technologies</span></div>
     </div>
@@ -590,20 +591,7 @@ function countUp(el){
   px('parallax-ntnb',55);
 })();
 
-// ── HERO H1 FADE IN ───────────────────────────────────────
-(function(){
-  var h1=document.getElementById('hero-h1');
-  if(!h1) return;
-  h1.style.opacity='0';
-  h1.style.transform='translateY(16px)';
-  h1.style.transition='opacity 0.75s ease 0.1s, transform 0.75s ease 0.1s';
-  requestAnimationFrame(function(){
-    requestAnimationFrame(function(){
-      h1.style.opacity='1';
-      h1.style.transform='none';
-    });
-  });
-})();
+
 
 // ── NTNB + NEW STRINGS I18N ───────────────────────────────
 (function(){
