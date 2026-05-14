@@ -44,6 +44,7 @@ button { font:inherit; color:inherit; background:none; border:0; padding:0; curs
 main { padding-top:60px; }
 /* On homepage, hero-dark is inside main — override main padding */
 main:has(.hero-dark) { padding-top:0; }
+main:has(.mrx-hero) { padding-top:0; }
 
 /* ── KEYFRAMES ── */
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
