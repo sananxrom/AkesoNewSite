@@ -172,3 +172,103 @@
   }
 
 })();
+
+// ── MOUSE CURSOR ────────────────────────────────────────────
+(function() {
+  var dot = document.getElementById('cursor-dot');
+  var ring = document.getElementById('cursor-ring');
+  if (!dot || !ring) return;
+
+  // Only on pointer:fine devices
+  if (!window.matchMedia('(pointer: fine)').matches) {
+    dot.style.display = 'none';
+    ring.style.display = 'none';
+    return;
+  }
+
+  var mx = window.innerWidth/2, my = window.innerHeight/2;
+  var rx = mx, ry = my;
+
+  // Move dot instantly
+  document.addEventListener('mousemove', function(e) {
+    mx = e.clientX; my = e.clientY;
+    dot.style.left = mx + 'px';
+    dot.style.top = my + 'px';
+  }, { passive: true });
+
+  // Ring follows with lerp
+  function lerpCursor() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(lerpCursor);
+  }
+  lerpCursor();
+
+  // Hover states
+  var hoverEls = 'a, button, .card, .research-cell, .ntnb-cap';
+  document.addEventListener('mouseover', function(e) {
+    if (e.target.closest(hoverEls)) {
+      document.body.classList.add('cursor-hover');
+    }
+  });
+  document.addEventListener('mouseout', function(e) {
+    if (e.target.closest(hoverEls)) {
+      document.body.classList.remove('cursor-hover');
+    }
+  });
+
+  // Dark cursor on light sections
+  var heroEl = document.querySelector('.hero-dark');
+  window.addEventListener('scroll', function() {
+    if (!heroEl) return;
+    var rect = heroEl.getBoundingClientRect();
+    var onDark = rect.bottom > 100;
+    // Check other dark sections
+    var darkSections = document.querySelectorAll('.future, .ntnb-section, .parallax-section');
+    var anyDark = onDark;
+    if (!anyDark) {
+      darkSections.forEach(function(s) {
+        var r = s.getBoundingClientRect();
+        if (r.top < window.innerHeight / 2 && r.bottom > window.innerHeight / 2) anyDark = true;
+      });
+    }
+    document.body.classList.toggle('cursor-dark', anyDark);
+  }, { passive: true });
+
+  // Hide cursor when leaving window
+  document.addEventListener('mouseleave', function() {
+    dot.style.opacity = '0';
+    ring.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', function() {
+    dot.style.opacity = '1';
+    ring.style.opacity = '';
+  });
+})();
+
+// ── HERO RETICLE — full-bleed version (follows mouse globally) ──
+(function() {
+  var reticle = document.getElementById('hero-reticle');
+  var hero = document.querySelector('.hero-dark');
+  if (!reticle || !hero) return;
+
+  var rx = 0, ry = 0, tx = 0, ty = 0;
+  var baseRight = 0.08; // 8% from right
+
+  document.addEventListener('mousemove', function(e) {
+    var rect = hero.getBoundingClientRect();
+    if (e.clientY > rect.bottom) { tx = 0; ty = 0; return; }
+    // Subtle parallax: reticle drifts opposite to mouse
+    tx = (e.clientX / window.innerWidth - 0.5) * -30;
+    ty = (e.clientY / window.innerHeight - 0.5) * -20;
+  }, { passive: true });
+
+  (function loop() {
+    rx += (tx - rx) * 0.05;
+    ry += (ty - ry) * 0.05;
+    reticle.style.transform = 'translateY(calc(-50% + ' + ry + 'px)) translateX(' + rx + 'px)';
+    requestAnimationFrame(loop);
+  })();
+})();
