@@ -591,7 +591,7 @@ a.contact-block-value:hover { color:var(--accent); }
 /* Nav: solid by default on all pages */
 .nav { background: color-mix(in oklab,var(--surface) 92%,transparent); backdrop-filter:saturate(160%) blur(14px); -webkit-backdrop-filter:saturate(160%) blur(14px); border-bottom-color:var(--rule); }
 /* Nav dark mode: only when .nav-on-dark class present (homepage only) */
-.nav.nav-on-dark:not(.solid) { background: transparent; backdrop-filter:none; -webkit-backdrop-filter:none; border-bottom-color:transparent; }
+.nav.nav-on-dark:not(.solid) { background: rgba(0,0,0,0.6); backdrop-filter:saturate(120%) blur(12px); -webkit-backdrop-filter:saturate(120%) blur(12px); border-bottom-color:rgba(255,255,255,0.06); }
 .nav.nav-on-dark:not(.solid) .nav-logo svg path { fill: white; }
 .nav.nav-on-dark:not(.solid) .nav-links a { color: rgba(255,255,255,0.7); }
 .nav.nav-on-dark:not(.solid) .nav-links a:hover { color: white; }
