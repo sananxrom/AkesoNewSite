@@ -135,7 +135,7 @@
     <h2 class="h2" data-i18n="sec2.h2">A research-led platform across optics, vision intelligence, and emerging visual systems.</h2>
   </div>
   <div class="cards-3 reveal-stagger">
-    <article class="card">
+    <a href="metarx.html" style="text-decoration:none;color:inherit;display:contents"><article class="card">
       <div class="card-head">
         <span class="card-num">P / 01</span>
         <span class="eyebrow no-dot mono" style="color:var(--ink-3)" data-i18n="sec2.card1_kicker">Optical Platform</span>
@@ -165,7 +165,7 @@
           <li style="display:flex;align-items:flex-start;gap:8px"><i data-lucide="circle-dot" class="icon-xs" style="color:var(--accent);flex-shrink:0;margin-top:2px"></i><span data-i18n="sec2.card1_l4">Ophthalmic optical engineering</span></li>
         </ul>
       </div>
-    </article>
+    </article></a>
     <article class="card">
       <div class="card-head">
         <span class="card-num">P / 02</span>
@@ -234,7 +234,7 @@
 </section>
 
 <!-- IMAGE STRIP -->
-<div class="img-strip reveal-fade">
+<div class="img-strip reveal-fade" style="grid-template-columns:1fr 1fr 1fr">
   <div class="img-strip-item">
     <img src="LFAB123.jpeg" alt="AKESO cleanroom facility" loading="lazy" onerror="this.src='LF3A0279.jpeg'">
     <span class="strip-label">Cleanroom · MetaRx™</span>
@@ -260,10 +260,16 @@
       <h2 data-i18n-html="sec3.h2">Technology should<br/>adapt to<br/>human vision.</h2>
       <p data-i18n="sec3.p1">Most visual technologies are designed around hardware constraints. AKESO approaches the problem the other way.</p>
       <p data-i18n="sec3.p2">By combining ophthalmic science, optical engineering, and precision research, AKESO develops technologies that align more naturally with how the human visual system actually functions.</p>
-      <a class="btn btn-primary" href="technology.html" style="margin-top:8px">
-        <span class="dot"></span><span data-i18n="sec3.cta">Explore Technology</span>
-        <i data-lucide="arrow-right" class="icon-xs"></i>
-      </a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+        <a class="btn btn-primary" href="technology.html">
+          <span class="dot"></span><span data-i18n="sec3.cta">Explore Technology</span>
+          <i data-lucide="arrow-right" class="icon-xs"></i>
+        </a>
+        <a class="btn btn-hero-ghost" href="metarx.html" data-i18n-wrap>
+          <span data-i18n="sec3.metarx_cta">Explore MetaRx™</span>
+          <i data-lucide="arrow-right" class="icon-xs"></i>
+        </a>
+      </div>
     </div>
     <div class="reveal">
       <div class="process-steps">
@@ -381,6 +387,10 @@
     <div class="reveal"><h2 data-i18n-html="sec6.h2">The next<br/>generation of<br/>computing will<br/>be visual.</h2></div>
     <div class="reveal" style="display:flex;flex-direction:column;gap:22px;align-self:end">
       <p data-i18n="sec6.p">Emerging technologies will increasingly depend on advanced visual systems — precision optics, intelligent interfaces, and human-aware display architectures. AKESO is building foundational technologies that support this transition.</p>
+      <a class="btn btn-primary" href="metarx.html" style="align-self:flex-start">
+        <span class="dot"></span><span data-i18n="sec6.metarx_cta">Explore MetaRx™</span>
+        <i data-lucide="arrow-right" class="icon-xs"></i>
+      </a>
       <div class="future-list">
         <div class="item"><span class="idx">/ 01</span><span class="lbl" style="display:flex;align-items:center;gap:7px"><i data-lucide="scan-line" style="width:11px;height:11px;color:var(--accent);flex-shrink:0"></i><span data-i18n="sec6.l1">Precision optical infrastructure</span></span><span class="v" data-i18n="sec6.l1_status">Active</span></div>
         <div class="item"><span class="idx">/ 02</span><span class="lbl" style="display:flex;align-items:center;gap:7px"><i data-lucide="eye" style="width:11px;height:11px;color:var(--accent);flex-shrink:0"></i><span data-i18n="sec6.l2">Human-aware visual systems</span></span><span class="v" data-i18n="sec6.l2_status">R&amp;D</span></div>
@@ -646,7 +656,9 @@ function countUp(el){
     'foot.l_ntnb':'AKESO ntnb',
     'sec5.img2':'帧 02 · 基底上料','sec5.img3':'帧 03 · 镜片处理',
     'sec3.tag':'从眼睛出发构建','sec3.cta':'探索技术',
-    'sec3.step1_s':'基础','sec3.step2_s':'进行中','sec3.step3_s':'进行中','sec3.step4_s':'研发中'
+    'sec3.step1_s':'基础','sec3.step2_s':'进行中','sec3.step3_s':'进行中','sec3.step4_s':'研发中',
+    'sec3.metarx_cta':'探索 MetaRx™',
+    'sec6.metarx_cta':'探索 MetaRx™'
   };
   function apply(){
     Object.keys(zh).forEach(function(k){
