@@ -5,6 +5,38 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>AKESO — Engineering the Future of Human Vision</title>
 <meta name="description" content="AKESO develops advanced optical technologies, precision visual systems, and research-driven vision infrastructure engineered from an ophthalmic understanding of the human eye." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://akeso-new-site.vercel.app/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://akeso-new-site.vercel.app/" />
+<meta property="og:title" content="AKESO — Engineering the Future of Human Vision" />
+<meta property="og:description" content="Advanced optical technologies and precision visual systems engineered around human vision." />
+<meta property="og:image" content="https://akeso-new-site.vercel.app/Heroimage.webp" />
+<meta property="og:image:width" content="1400" />
+<meta property="og:image:height" content="933" />
+<meta property="og:site_name" content="AKESO" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@akesoglobal" />
+<meta name="twitter:title" content="AKESO — Engineering the Future of Human Vision" />
+<meta name="twitter:description" content="Advanced optical technologies and precision visual systems engineered around human vision." />
+<meta name="twitter:image" content="https://akeso-new-site.vercel.app/Heroimage.webp" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"AKESO","url":"https://akeso-new-site.vercel.app","description":"AKESO develops advanced optical technologies, precision visual systems, and research-driven vision infrastructure.","sameAs":["https://www.linkedin.com/company/akeso","https://www.instagram.com/akesoglobal/","https://x.com/akesoglobal"],"address":{"@type":"PostalAddress","addressLocality":"Beijing","addressCountry":"CN"},"email":"hello@akesoeyecare.com","foundingDate":"2024","knowsAbout":["Optical Engineering","Computer Vision","Eye Tracking","XR Optics","Photolithography","Metasurface Optics"]}
+</script>
+<link rel="canonical" href="https://akeso-new-site.vercel.app/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://akeso-new-site.vercel.app/" />
+<meta property="og:title" content="AKESO — Engineering the Future of Human Vision" />
+<meta property="og:description" content="AKESO develops advanced optical technologies, precision visual systems, and research-driven vision infrastructure engineered from an ophthalmic understanding of the human eye." />
+<meta property="og:image" content="https://akeso-new-site.vercel.app/Heroimage.webp" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@akesoglobal" />
+<meta name="twitter:title" content="AKESO — Engineering the Future of Human Vision" />
+<meta name="twitter:description" content="Advanced optical technologies and precision visual systems engineered around human vision." />
+<meta name="twitter:image" content="https://akeso-new-site.vercel.app/Heroimage.webp" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"AKESO","url":"https://akeso-new-site.vercel.app","logo":"https://akeso-new-site.vercel.app/assets/akeso-logo.svg","description":"AKESO develops advanced optical technologies, precision visual systems, and research-driven vision infrastructure.","sameAs":["https://www.linkedin.com/company/akeso","https://www.instagram.com/akesoglobal/","https://x.com/akesoglobal"],"address":{"@type":"PostalAddress","addressLocality":"Beijing","addressCountry":"CN"},"email":"hello@akesoeyecare.com"}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -14,6 +46,8 @@
 <style>html{visibility:hidden}html.ready{visibility:visible}</style>
 </head>
 <body>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
 
 <nav class="nav" id="nav">
   <a class="nav-logo" href="#top" aria-label="AKESO">
@@ -41,58 +75,57 @@
 <main id="top">
 
 <!-- HERO -->
-<header class="hero shell">
-  <div class="hero-left">
-    <div>
-      <div class="hero-eyebrow"><i data-lucide="eye" style="width:12px;height:12px;color:var(--accent);flex-shrink:0"></i><span data-i18n="hero.eyebrow">AKESO — Vision Technologies</span></div>
+<header class="hero-dark" id="top">
+  <img class="hero-bg-img" src="Heroimage.webp" alt="AKESO optical research facility" aria-hidden="true">
+  <div class="hero-bg-overlay"></div>
+  <!-- Grid texture via CSS ::before -->
+  <!-- Reticle -->
+  <div id="hero-reticle">
+    <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="130" cy="130" r="118" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+      <circle id="rot-ring" cx="130" cy="130" r="118" fill="none" stroke="oklch(0.65 0.18 45)" stroke-width="0.9" stroke-dasharray="5 15" opacity="0.45"/>
+      <circle cx="130" cy="130" r="88" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.8"/>
+      <circle cx="130" cy="130" r="58" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+      <circle id="rot-ring-inner" cx="130" cy="130" r="58" fill="none" stroke="oklch(0.65 0.18 45)" stroke-width="0.7" stroke-dasharray="3 10" opacity="0.35"/>
+      <line x1="130" y1="8" x2="130" y2="40" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+      <line x1="130" y1="220" x2="130" y2="252" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+      <line x1="8" y1="130" x2="40" y2="130" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+      <line x1="220" y1="130" x2="252" y2="130" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+      <path d="M28,28 L28,42 L42,42" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+      <path d="M232,28 L232,42 L218,42" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+      <path d="M28,232 L28,218 L42,218" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+      <path d="M232,232 L232,218 L218,218" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+      <circle cx="130" cy="130" r="4" fill="oklch(0.65 0.18 45)"/>
+      <circle cx="130" cy="130" r="10" fill="none" stroke="oklch(0.65 0.18 45)" stroke-width="0.8" opacity="0.45"/>
+      <circle id="pulse1" cx="130" cy="130" r="14" fill="none" stroke="oklch(0.65 0.18 45)" stroke-width="0.7" opacity="0"/>
+      <circle id="pulse2" cx="130" cy="130" r="14" fill="none" stroke="oklch(0.65 0.18 45)" stroke-width="0.5" opacity="0"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <i data-lucide="eye" style="width:12px;height:12px;color:var(--accent);flex-shrink:0"></i>
+      <span data-i18n="hero.eyebrow">AKESO — Vision Technologies</span>
     </div>
-    <div style="display:flex;flex-direction:column;gap:26px">
-      <h1 id="hero-h1" data-i18n-html="hero.h1">Engineering the<br/>Future of <span class="em">Human Vision</span>.</h1>
-      <p class="hero-support" data-i18n="hero.support">AKESO develops advanced optical technologies, precision visual systems, and research-driven vision infrastructure — engineered from an ophthalmic understanding of the human eye.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="contact.html">
-          <span class="dot"></span><span data-i18n="hero.cta_partner">Partner With AKESO</span>
-          <i data-lucide="arrow-right" class="icon-xs"></i>
-        </a>
-        <a class="btn btn-ghost" href="technology.html">
-          <span data-i18n="hero.cta_explore">Explore Technology</span>
-          <i data-lucide="arrow-right" class="icon-xs"></i>
-        </a>
-      </div>
+    <h1 id="hero-h1" data-i18n-html="hero.h1">Engineering the<br/>Future of <span class="em">Human Vision</span>.</h1>
+    <p class="hero-support" data-i18n="hero.support">AKESO develops advanced optical technologies, precision visual systems, and research-driven vision infrastructure — engineered from an ophthalmic understanding of the human eye.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="contact.html">
+        <span class="dot"></span><span data-i18n="hero.cta_partner">Partner With AKESO</span>
+        <i data-lucide="arrow-right" class="icon-xs"></i>
+      </a>
+      <a class="btn btn-hero-ghost" href="technology.html">
+        <span data-i18n="hero.cta_explore">Explore Technology</span>
+        <i data-lucide="arrow-right" class="icon-xs"></i>
+      </a>
     </div>
     <div class="hero-bottom">
-      <div class="item"><span class="k" data-i18n="hero.disc_label_1">01 / Discipline</span><span class="v" style="display:flex;align-items:center;gap:6px"><i data-lucide="scan-line" style="width:11px;height:11px;color:var(--accent)"></i><span data-i18n="hero.disc_1">Precision Optics</span></span></div>
-      <div class="item"><span class="k" data-i18n="hero.disc_label_2">02 / Discipline</span><span class="v" style="display:flex;align-items:center;gap:6px"><i data-lucide="brain-circuit" style="width:11px;height:11px;color:var(--accent)"></i><span data-i18n="hero.disc_2">Ai+ Visual Intelligence</span></span></div>
-      <div class="item"><span class="k" data-i18n="hero.disc_label_3">03 / Discipline</span><span class="v" style="display:flex;align-items:center;gap:6px"><i data-lucide="layers" style="width:11px;height:11px;color:var(--accent)"></i><span data-i18n="hero.disc_3">Xr+ Future Vision Platforms</span></span></div>
+      <div class="item"><span class="k" data-i18n="hero.disc_label_1">01 / Discipline</span><span class="v"><i data-lucide="scan-line" style="width:11px;height:11px;color:var(--accent)"></i><span data-i18n="hero.disc_1">Precision Optics</span></span></div>
+      <div class="item"><span class="k" data-i18n="hero.disc_label_2">02 / Discipline</span><span class="v"><i data-lucide="brain-circuit" style="width:11px;height:11px;color:var(--accent)"></i><span data-i18n="hero.disc_2">Ai+ Visual Intelligence</span></span></div>
+      <div class="item"><span class="k" data-i18n="hero.disc_label_3">03 / Discipline</span><span class="v"><i data-lucide="layers" style="width:11px;height:11px;color:var(--accent)"></i><span data-i18n="hero.disc_3">Xr+ Future Vision Platforms</span></span></div>
     </div>
   </div>
-
-  <div class="hero-right" id="hero-viz">
-    <img class="hero-photo" src="heroimage.jpeg" alt="Human eye — AKESO ophthalmic research">
-    <span class="corner tl" data-i18n="hero.viz_signal">SIGNAL ACTIVE · Ophthalmic model</span>
-    <span class="corner br">M-RX · 0.482 µm</span>
-    <div id="hero-reticle">
-      <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="130" cy="130" r="118" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-        <circle id="rot-ring" cx="130" cy="130" r="118" fill="none" stroke="oklch(0.65 0.18 45)" stroke-width="0.9" stroke-dasharray="5 15" opacity="0.55"/>
-        <circle cx="130" cy="130" r="88" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
-        <circle cx="130" cy="130" r="58" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
-        <circle id="rot-ring-inner" cx="130" cy="130" r="58" fill="none" stroke="oklch(0.65 0.18 45)" stroke-width="0.7" stroke-dasharray="3 10" opacity="0.45"/>
-        <line x1="130" y1="8" x2="130" y2="40" stroke="rgba(255,255,255,0.28)" stroke-width="0.8"/>
-        <line x1="130" y1="220" x2="130" y2="252" stroke="rgba(255,255,255,0.28)" stroke-width="0.8"/>
-        <line x1="8" y1="130" x2="40" y2="130" stroke="rgba(255,255,255,0.28)" stroke-width="0.8"/>
-        <line x1="220" y1="130" x2="252" y2="130" stroke="rgba(255,255,255,0.28)" stroke-width="0.8"/>
-        <path d="M28,28 L28,42 L42,42" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="1"/>
-        <path d="M232,28 L232,42 L218,42" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="1"/>
-        <path d="M28,232 L28,218 L42,218" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="1"/>
-        <path d="M232,232 L232,218 L218,218" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="1"/>
-        <circle cx="130" cy="130" r="4" fill="oklch(0.65 0.18 45)"/>
-        <circle cx="130" cy="130" r="10" fill="none" stroke="oklch(0.65 0.18 45)" stroke-width="0.8" opacity="0.45"/>
-        <circle id="pulse1" cx="130" cy="130" r="14" fill="none" stroke="oklch(0.65 0.18 45)" stroke-width="0.7" opacity="0"/>
-        <circle id="pulse2" cx="130" cy="130" r="14" fill="none" stroke="oklch(0.65 0.18 45)" stroke-width="0.5" opacity="0"/>
-      </svg>
-    </div>
-  </div>
+  <span class="hero-corner-tl">SIGNAL ACTIVE · Ophthalmic model</span>
+  <span class="hero-corner-br">M-RX · 0.482 µm</span>
 </header>
 
 <!-- SECTION 2 — PLATFORMS -->
@@ -206,7 +239,7 @@
 <!-- IMAGE STRIP -->
 <div class="img-strip reveal-fade">
   <div class="img-strip-item">
-    <img src="LF3A0236.jpeg" alt="AKESO cleanroom facility" loading="lazy">
+    <img src="LF3A0236.jpeg" alt="AKESO cleanroom facility" loading="lazy" onerror="this.src='LF3A0279.jpeg'">
     <span class="strip-label">Cleanroom · MetaRx™</span>
   </div>
   <div class="img-strip-item">
@@ -363,7 +396,7 @@
 
 <!-- NTNB SECTION -->
 <section class="ntnb-section" id="ntnb">
-  <img class="ntnb-bg" id="parallax-ntnb" src="LF3A0284.jpeg" alt="" aria-hidden="true" loading="lazy">
+  <img class="ntnb-bg" id="parallax-ntnb" src="ntnb_bg.webp" alt="" aria-hidden="true" loading="lazy">
   <div class="ntnb-grid"></div>
   <div class="ntnb-inner">
     <div class="reveal">
@@ -452,9 +485,11 @@
       <li><a href="index.html#ntnb" data-i18n="foot.l_ntnb">AKESO ntnb</a></li>
     </ul></div>
     <div class="foot-col"><h5 data-i18n="foot.col3">Connect</h5><ul>
-      <li><a href="#" style="display:flex;align-items:center;gap:8px"><i data-lucide="linkedin" style="width:13px;height:13px;flex-shrink:0;color:var(--accent)"></i><span data-i18n="foot.l_linkedin">LinkedIn</span></a></li>
-      <li><a href="mailto:hello@akesoeyecare.com" style="display:flex;align-items:center;gap:8px"><i data-lucide="mail" style="width:13px;height:13px;flex-shrink:0"></i>hello@akesoeyecare.com</a></li>
-      <li><a href="https://ntnb-web.vercel.app" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px"><i data-lucide="flask-conical" style="width:13px;height:13px;flex-shrink:0"></i>AKESO ntnb</a></li>
+      <li><a href="https://www.linkedin.com/company/akeso" target="_blank" rel="noopener"><i data-lucide="linkedin" style="width:13px;height:13px;color:var(--accent)"></i><span data-i18n="foot.l_linkedin">LinkedIn</span></a></li>
+      <li><a href="https://www.instagram.com/akesoglobal/" target="_blank" rel="noopener"><i data-lucide="instagram" style="width:13px;height:13px;color:var(--accent)"></i>Instagram</a></li>
+      <li><a href="https://x.com/akesoglobal" target="_blank" rel="noopener"><i data-lucide="twitter" style="width:13px;height:13px;color:var(--accent)"></i>X / Twitter</a></li>
+      <li><a href="mailto:hello@akesoeyecare.com"><i data-lucide="mail" style="width:13px;height:13px"></i>hello@akesoeyecare.com</a></li>
+      <li><a href="https://ntnb-web.vercel.app" target="_blank" rel="noopener"><i data-lucide="flask-conical" style="width:13px;height:13px"></i>AKESO ntnb</a></li>
     </ul></div>
   </div>
   <div class="foot-bottom">
