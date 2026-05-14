@@ -1,0 +1,1004 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MetaRx™ — Nanophotonic Optical Platform | AKESO</title>
+<meta name="description" content="MetaRx™ combines nanophotonic optics, metasurfaces, metalenses, lithographic manufacturing, and computational optics to enable next-generation visual technologies." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://akeso-new-site.vercel.app/metarx.html" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://akeso-new-site.vercel.app/metarx.html" />
+<meta property="og:title" content="MetaRx™ — Nanophotonic Optical Platform | AKESO" />
+<meta property="og:description" content="Designing, developing, and manufacturing advanced optical elements and precision visual systems engineered around human vision." />
+<meta property="og:image" content="https://akeso-new-site.vercel.app/images/metarxhero.png" />
+<meta property="og:site_name" content="AKESO" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@akesoglobal" />
+<meta name="twitter:title" content="MetaRx™ — Nanophotonic Optical Platform | AKESO" />
+<meta name="twitter:description" content="Advanced nanophotonic optics and precision visual systems engineered around human vision." />
+<meta name="twitter:image" content="https://akeso-new-site.vercel.app/images/metarxhero.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+/* ── METARX PAGE SPECIFIC ────────────────────────────────────── */
+
+/* Hero — full bleed dark with lab image */
+.mrx-hero {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 0;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--black);
+}
+.mrx-hero-bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+  opacity: 0.55;
+  transition: transform 10s ease-out;
+}
+.mrx-hero:hover .mrx-hero-bg { transform: scale(1.02); }
+.mrx-hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.2) 0%,
+    rgba(0,0,0,0.15) 40%,
+    rgba(0,0,0,0.75) 80%,
+    rgba(0,0,0,0.95) 100%
+  );
+}
+/* grid texture */
+.mrx-hero::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 2;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,0.014) 60px),
+    repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.014) 60px);
+  pointer-events: none;
+}
+.mrx-hero-content {
+  position: relative; z-index: 3;
+  padding: 0 var(--pad-x) clamp(56px,7vw,88px);
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(48px,6vw,88px);
+  align-items: end;
+}
+.mrx-hero-left { display: flex; flex-direction: column; gap: 24px; }
+.mrx-hero-label {
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex; align-items: center; gap: 10px;
+}
+.mrx-hero-label::before {
+  content: ''; width: 20px; height: 1.5px;
+  background: var(--accent);
+}
+.mrx-hero h1 {
+  font-size: clamp(36px, 5.5vw, 78px);
+  line-height: 1.0; letter-spacing: -0.03em;
+  font-weight: 400; margin: 0; color: white;
+}
+.mrx-hero h1 em { font-style: italic; color: var(--accent); }
+.mrx-hero-support {
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.65; color: rgba(255,255,255,0.62);
+  max-width: 50ch; margin: 0;
+}
+.mrx-hero-actions { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 8px; }
+.mrx-hero-right {
+  display: flex; flex-direction: column;
+  gap: 0; align-self: end;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 20px;
+}
+.mrx-hero-stat {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 8px; padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.mrx-hero-stat .sk {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.32);
+}
+.mrx-hero-stat .sv {
+  font-size: 13px; color: rgba(255,255,255,0.78);
+  letter-spacing: -0.005em;
+}
+/* corner label */
+.mrx-corner {
+  position: absolute;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); z-index: 4;
+}
+.mrx-corner.tl { top: 80px; left: var(--pad-x); display: flex; gap: 8px; align-items: center; }
+.mrx-corner.tl::before {
+  content: ''; width: 6px; height: 6px;
+  background: var(--accent); border-radius: 50%;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+.mrx-corner.br { bottom: 28px; right: var(--pad-x); }
+
+/* ── SECTION HEADER (dark variant) ──────────────────────────── */
+.section-head-dark {
+  display: grid; grid-template-columns: 1fr 2fr;
+  gap: var(--gutter); align-items: end;
+  padding-bottom: clamp(40px,6vw,72px);
+}
+.section-head-dark .meta { display: flex; flex-direction: column; gap: 14px; }
+.section-head-dark .section-index { color: rgba(255,255,255,0.35) !important; }
+.section-head-dark .h2 { color: white; }
+.section-head-dark .eyebrow { color: rgba(255,255,255,0.4); }
+
+/* ── PHILOSOPHY SECTION (dark) ───────────────────────────────── */
+.mrx-philosophy {
+  background: var(--black); color: white;
+  padding: clamp(80px,10vw,120px) var(--pad-x);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  position: relative; overflow: hidden;
+}
+.mrx-philosophy::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255,255,255,0.018) 80px),
+    repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,255,255,0.018) 80px);
+  pointer-events: none; z-index: 1;
+}
+.mrx-philosophy > * { position: relative; z-index: 2; }
+.mrx-phil-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(48px,7vw,96px); align-items: start;
+  margin-top: clamp(44px,5vw,64px);
+}
+.mrx-phil-image {
+  position: relative; overflow: hidden; border-radius: 4px;
+  aspect-ratio: 3/2; background: var(--black-2);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.mrx-phil-image img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block; filter: grayscale(0.05);
+  transition: transform 0.7s ease;
+}
+.mrx-phil-image:hover img { transform: scale(1.03); }
+.mrx-phil-image .img-label {
+  position: absolute; bottom: 14px; left: 14px;
+  font-family: var(--mono); font-size: 9.5px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55); z-index: 2;
+}
+.mrx-phil-image::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 50%);
+}
+.mrx-phil-text { display: flex; flex-direction: column; gap: 28px; }
+.mrx-phil-text p {
+  font-size: clamp(14px,1.05vw,16px);
+  line-height: 1.7; color: rgba(255,255,255,0.6);
+  margin: 0;
+}
+.mrx-phil-points {
+  display: flex; flex-direction: column;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.mrx-phil-point {
+  display: flex; align-items: center; gap: 14px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 13.5px; color: rgba(255,255,255,0.7);
+  letter-spacing: -0.005em;
+  transition: padding-left 0.2s;
+}
+.mrx-phil-point:hover { padding-left: 6px; }
+.mrx-phil-point::before {
+  content: ''; width: 5px; height: 5px;
+  background: var(--accent); border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── CORE PLATFORM GRID ──────────────────────────────────────── */
+.mrx-tech-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: var(--rule);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.mrx-tech-cell {
+  background: var(--surface);
+  padding: clamp(24px,2.8vw,40px);
+  display: flex; flex-direction: column; gap: 14px;
+  min-height: 200px;
+  transition: background 220ms;
+  position: relative; overflow: hidden;
+}
+.mrx-tech-cell:hover { background: var(--surface-2); }
+.mrx-tech-cell::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s;
+}
+.mrx-tech-cell:hover::before { transform: scaleX(1); }
+.mrx-tech-cell .t-idx {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.mrx-tech-cell h4 {
+  font-size: clamp(16px,1.4vw,20px);
+  font-weight: 500; letter-spacing: -0.012em;
+  margin: 0; line-height: 1.15; color: var(--ink);
+}
+.mrx-tech-cell p {
+  font-size: 13.5px; line-height: 1.55;
+  color: var(--ink-3); margin: 0;
+}
+.mrx-tech-cell .t-dot {
+  width: 6px; height: 6px;
+  background: var(--accent); border-radius: 50%;
+  margin-top: auto;
+}
+
+/* ── MODULE BLOCKS (product platforms) ───────────────────────── */
+.mrx-module {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(36px,5vw,80px);
+  align-items: start;
+  padding-top: var(--pad-y); padding-bottom: var(--pad-y);
+  border-top: 1px solid var(--rule);
+}
+.mrx-module.reverse { direction: rtl; }
+.mrx-module.reverse > * { direction: ltr; }
+.mrx-module-image {
+  position: relative; overflow: hidden;
+  border-radius: 4px; background: var(--surface-2);
+  border: 1px solid var(--rule); aspect-ratio: 4/3;
+}
+.mrx-module-image img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block; transition: transform 0.7s ease;
+}
+.mrx-module-image:hover img { transform: scale(1.04); }
+.mrx-module-image .m-label {
+  position: absolute; bottom: 14px; left: 14px;
+  font-family: var(--mono); font-size: 9.5px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.6); z-index: 2;
+}
+.mrx-module-image::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 50%);
+  pointer-events: none;
+}
+.mrx-module-image .m-corner {
+  position: absolute; top: 14px; left: 14px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-3); z-index: 2;
+  display: flex; gap: 8px; align-items: center;
+}
+.mrx-module-image .m-corner::before {
+  content: ''; width: 6px; height: 6px;
+  background: var(--accent); border-radius: 50%;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+.mrx-module-image .m-corner-br {
+  position: absolute; bottom: 14px; right: 14px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.1em; color: rgba(255,255,255,0.45);
+  text-transform: uppercase; z-index: 2;
+}
+.mrx-module-content {
+  display: flex; flex-direction: column;
+  gap: clamp(22px,2.8vw,34px); padding-top: 8px;
+}
+.mrx-module-tag {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.mrx-module-tag .tag-num { color: var(--accent); font-weight: 500; }
+.mrx-module-h {
+  font-size: clamp(24px,2.8vw,40px);
+  font-weight: 400; letter-spacing: -0.022em;
+  line-height: 1.05; margin: 0;
+}
+.mrx-module-h sup {
+  font-family: var(--mono); font-size: 0.4em;
+  font-weight: 400; vertical-align: top;
+  margin-left: 2px; color: var(--ink-3);
+}
+.mrx-module-body {
+  font-size: clamp(14px,1.05vw,16px);
+  line-height: 1.65; color: var(--ink-2);
+  margin: 0; max-width: 48ch;
+}
+.mrx-module-lists {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(24px,3vw,40px);
+}
+.mrx-module-list { display: flex; flex-direction: column; gap: 12px; }
+.mrx-module-list-label {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-3); padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+}
+.mrx-module-list ul {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 7px;
+}
+.mrx-module-list li {
+  font-size: 13px; color: var(--ink-2);
+  font-family: var(--mono); letter-spacing: 0.01em;
+  display: flex; align-items: flex-start; gap: 8px;
+  line-height: 1.4;
+}
+.mrx-module-list li::before {
+  content: ''; width: 4px; height: 4px;
+  background: var(--accent); border-radius: 50%;
+  flex-shrink: 0; margin-top: 5px;
+}
+.mrx-module-cta {
+  display: flex; align-items: center; gap: 10px;
+  padding-top: 4px;
+}
+
+/* ── COLLABORATION SECTION ───────────────────────────────────── */
+.mrx-collab {
+  background: var(--black); color: white;
+  padding: clamp(80px,10vw,120px) var(--pad-x);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  position: relative; overflow: hidden;
+}
+.mrx-collab::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent 60%);
+  z-index: 2;
+}
+.mrx-collab::after {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,0.016) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(255,255,255,0.016) 60px);
+  pointer-events: none; z-index: 1;
+}
+.mrx-collab > * { position: relative; z-index: 2; }
+.mrx-collab h2 {
+  font-size: clamp(30px,4.5vw,60px);
+  font-weight: 400; letter-spacing: -0.025em;
+  line-height: 1.0; color: white; margin: 0 0 clamp(40px,5vw,64px);
+}
+.mrx-collab-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 2px; overflow: hidden;
+  margin-bottom: clamp(48px,6vw,72px);
+}
+.mrx-collab-cell {
+  background: rgba(255,255,255,0.02);
+  padding: clamp(22px,2.6vw,36px);
+  display: flex; flex-direction: column; gap: 10px;
+  min-height: 170px;
+  transition: background 0.2s;
+}
+.mrx-collab-cell:hover { background: rgba(255,255,255,0.05); }
+.mrx-collab-cell .c-idx {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+}
+.mrx-collab-cell .c-title {
+  font-size: clamp(14px,1.2vw,17px);
+  font-weight: 500; color: rgba(255,255,255,0.8);
+  letter-spacing: -0.01em; line-height: 1.25;
+}
+.mrx-collab-cell .c-body {
+  font-size: 13px; color: rgba(255,255,255,0.42);
+  line-height: 1.55; margin: 0;
+}
+.mrx-collab-cell .c-dot {
+  width: 6px; height: 6px;
+  background: var(--accent); border-radius: 50%; margin-top: auto;
+}
+.mrx-collab-ctas {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 2px; overflow: hidden;
+}
+.mrx-collab-cta-cell {
+  background: rgba(255,255,255,0.02);
+  padding: clamp(22px,2.6vw,36px);
+  display: flex; flex-direction: column; gap: 12px;
+  transition: background 0.2s;
+}
+.mrx-collab-cta-cell:hover { background: rgba(255,255,255,0.04); }
+.mrx-collab-cta-cell h5 {
+  font-size: clamp(14px,1.2vw,17px);
+  font-weight: 500; color: white;
+  margin: 0; letter-spacing: -0.01em; line-height: 1.25;
+}
+.mrx-collab-cta-cell p {
+  font-size: 13px; color: rgba(255,255,255,0.45);
+  line-height: 1.55; margin: 0; flex: 1;
+}
+
+/* ── FINAL CTA ───────────────────────────────────────────────── */
+.mrx-final-cta {
+  background: var(--black); color: white;
+  padding: clamp(96px,13vw,148px) var(--pad-x);
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center; gap: 28px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.mrx-final-cta h2 {
+  font-size: clamp(32px,5vw,70px);
+  line-height: 0.98; letter-spacing: -0.025em;
+  font-weight: 400; margin: 0; color: white; max-width: 18ch;
+}
+.mrx-final-cta p {
+  max-width: 52ch; margin: 0;
+  font-size: clamp(14px,1.1vw,16px);
+  color: rgba(255,255,255,0.55); line-height: 1.65;
+}
+.mrx-final-cta .actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+
+/* Responsive */
+@media (max-width:1100px) {
+  .mrx-hero-content { grid-template-columns: 1fr; }
+  .mrx-hero-right { display: none; }
+  .mrx-phil-grid { grid-template-columns: 1fr; }
+  .mrx-tech-grid { grid-template-columns: repeat(2,1fr); }
+  .mrx-module { grid-template-columns: 1fr; }
+  .mrx-module.reverse { direction: ltr; }
+  .mrx-collab-grid { grid-template-columns: repeat(2,1fr); }
+  .mrx-collab-ctas { grid-template-columns: 1fr; }
+  .section-head-dark { grid-template-columns: 1fr; gap: 22px; }
+  .mrx-module-lists { grid-template-columns: 1fr; }
+}
+@media (max-width:640px) {
+  .mrx-tech-grid { grid-template-columns: 1fr; }
+  .mrx-collab-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- NAV -->
+<nav class="nav nav-on-dark" id="nav">
+  <a class="nav-logo" href="index.html" aria-label="AKESO">
+    <svg viewBox="0 0 1193.28 246.77" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M374.69,107.54l103.32,135.17h-50.82l-80.97-106.71-36.93,37.94v68.77h-41.67V5.57h41.67v119.25L421.78,5.57h51.83l-98.92,101.97ZM544.06,142.09h118.91v-37.6h-118.91v-61.66h134.15V5.57h-175.82v237.14h177.52v-37.27h-135.85v-63.35ZM814.56,105.16c-45.73-10.84-56.57-18.97-56.57-37.27v-.68c0-15.92,14.23-28.12,38.62-28.12,21.68,0,42.68,8.47,64.37,24.39l22.36-31.51c-24.39-19.31-51.16-29.81-86.05-29.81-47.09,0-80.97,28.12-80.97,68.77v.68c0,43.36,28.46,58.95,78.93,70.8,44.04,9.82,53.53,19.65,53.53,36.25v.68c0,17.62-16.26,29.81-42.01,29.81-29.47,0-51.83-10.84-74.87-30.83l-25.07,29.81c28.46,25.75,62.33,37.94,98.92,37.94,49.8,0,84.69-26.09,84.69-70.8v-.68c0-39.64-26.09-56.57-75.89-69.45ZM1160.11,123.46v.68c0,66.4-51.49,122.64-124.33,122.64s-123.65-55.22-123.65-121.96v-.68c0-66.4,51.49-122.64,124.33-122.64s123.65,55.22,123.65,121.96ZM1116.41,124.14c0-46.07-33.2-84.02-80.63-84.02s-79.95,37.26-79.95,83.34v.68c0,46.07,33.2,84.02,80.63,84.02s79.95-37.27,79.95-83.34v-.68ZM22.69,196.22c13.54-13.95,29.95-25.04,48.4-32.43,2.02-.81,4.05-1.57,6.09-2.28l5.51-12.98,40.16-94.55.13-.31.13.31,40.16,94.55,5.51,12.98c2.05.7,4.08,1.46,6.1,2.28,18.44,7.39,34.85,18.47,48.39,32.42.86.89,2.31-.1,1.81-1.23L141.63,3.88h-37.27L20.88,194.98c-.49,1.13.95,2.12,1.81,1.23ZM172.41,170c-15.29-6.14-31.96-9.52-49.42-9.52s-34.13,3.38-49.42,9.52c-31.43,12.6-56.96,36.86-71.23,67.41-.83,1.74-1.61,3.52-2.34,5.3h41.29c1.19-1.92,2.46-3.79,3.79-5.62,17.51-24.08,45.91-39.77,77.91-39.77s60.4,15.69,77.91,39.77c1.34,1.83,2.6,3.71,3.79,5.62h41.29c-.74-1.79-1.52-3.56-2.34-5.3-14.27-30.54-39.81-54.81-71.23-67.41Z"/></svg>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="technology.html" class="active">Technology</a>
+    <a href="research.html">Research Areas</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Toggle language">
+      <span class="seg" data-lang="en">EN</span>
+      <span class="seg-sep">/</span>
+      <span class="seg" data-lang="zh">中文</span>
+    </button>
+    <a class="btn btn-primary nav-cta" href="contact.html">
+      <span class="dot"></span>
+      <span>Partner With AKESO</span>
+    </a>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<header class="mrx-hero" id="top">
+  <img class="mrx-hero-bg" src="images/metarxhero.png" alt="MetaRx™ nanophotonic fabrication" aria-hidden="true">
+  <div class="mrx-hero-overlay"></div>
+  <span class="mrx-corner tl">MetaRx™ · Nanophotonic Platform</span>
+  <span class="mrx-corner br">AKESO™ · P/01</span>
+  <div class="mrx-hero-content">
+    <div class="mrx-hero-left">
+      <div class="mrx-hero-label">AKESO™ MetaRx™</div>
+      <h1>Redefining Optical Engineering<br/>at the <em>Nanoscale.</em></h1>
+      <p class="mrx-hero-support">Designing, developing, and manufacturing advanced optical elements and precision visual systems engineered around human vision. MetaRx™ combines nanophotonic optics, metasurfaces, metalenses, lithographic manufacturing, computational optics, and ophthalmic science.</p>
+      <div class="mrx-hero-actions">
+        <a class="btn btn-primary" href="contact.html">
+          <span class="dot"></span>
+          Discuss Collaboration
+        </a>
+        <a class="btn btn-hero-ghost" href="#platforms">
+          Explore Technologies
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="mrx-hero-right">
+      <div class="mrx-hero-stat">
+        <span class="sk">Platform Type</span>
+        <span class="sv">Nanophotonic Optics</span>
+      </div>
+      <div class="mrx-hero-stat">
+        <span class="sk">Manufacturing</span>
+        <span class="sv">Lithographic Fabrication</span>
+      </div>
+      <div class="mrx-hero-stat">
+        <span class="sk">Scale</span>
+        <span class="sv">Sub-wavelength structures</span>
+      </div>
+      <div class="mrx-hero-stat">
+        <span class="sk">Applications</span>
+        <span class="sv">Healthcare · Wearables · XR</span>
+      </div>
+      <div class="mrx-hero-stat">
+        <span class="sk">Research Status</span>
+        <span class="sv" style="color:var(--accent)">Active · Commercial + R&D</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PHILOSOPHY -->
+<section class="mrx-philosophy" id="philosophy">
+  <div class="reveal">
+    <span class="section-index" style="color:rgba(255,255,255,0.35)!important;margin-bottom:20px;display:block">02 — Vision & Philosophy</span>
+    <h2 style="font-size:clamp(28px,4vw,52px);font-weight:400;letter-spacing:-0.024em;line-height:1.04;color:white;margin:0;max-width:20ch">Built Around Human Vision</h2>
+  </div>
+  <div class="mrx-phil-grid">
+    <div class="mrx-phil-image reveal-fade">
+      <img src="images/Airlens.jpg" alt="MetaRx™ metalens — AKESO Danyang fabrication" loading="lazy">
+      <div class="img-label">Airlens™ · MetaRx™ Fabcal Center · Danyang</div>
+    </div>
+    <div class="mrx-phil-text reveal">
+      <p>Most visual technologies are designed around hardware limitations. MetaRx™ approaches optical engineering differently.</p>
+      <p>Built on foundations in ophthalmology, precision optics, and nanophotonic research, MetaRx™ develops optical systems designed to align more naturally with the human visual system itself.</p>
+      <p>From myopia management and adaptive lenses to metasurface optics and waveguide architectures, every system is engineered around how humans see, focus, perceive depth, and interact with visual information.</p>
+      <div class="mrx-phil-points">
+        <div class="mrx-phil-point">Ophthalmology-informed optical design</div>
+        <div class="mrx-phil-point">Nanophotonic engineering</div>
+        <div class="mrx-phil-point">Precision lithographic manufacturing</div>
+        <div class="mrx-phil-point">Computational wavefront optimization</div>
+        <div class="mrx-phil-point">Human-centric optical architectures</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE PLATFORM -->
+<section class="section shell">
+  <div class="section-head reveal">
+    <div class="meta">
+      <span class="section-index">03 — Core Platform</span>
+      <span class="eyebrow no-dot mono">Six Technology Areas</span>
+    </div>
+    <h2 class="h2">Nanophotonic Optical Platform</h2>
+  </div>
+  <div class="mrx-tech-grid reveal-stagger">
+    <div class="mrx-tech-cell">
+      <span class="t-idx">T / 01</span>
+      <h4>Metasurfaces</h4>
+      <p>Subwavelength optical structures engineered to manipulate light with extreme precision.</p>
+      <div class="t-dot"></div>
+    </div>
+    <div class="mrx-tech-cell">
+      <span class="t-idx">T / 02</span>
+      <h4>Metalenses</h4>
+      <p>Flat optical architectures replacing traditional curved lens systems through nanoscale phase control.</p>
+      <div class="t-dot"></div>
+    </div>
+    <div class="mrx-tech-cell">
+      <span class="t-idx">T / 03</span>
+      <h4>Optical Phase Control</h4>
+      <p>Precise manipulation of light propagation for aberration management and advanced visual performance.</p>
+      <div class="t-dot"></div>
+    </div>
+    <div class="mrx-tech-cell">
+      <span class="t-idx">T / 04</span>
+      <h4>Wavefront Engineering</h4>
+      <p>Computational optimization of optical behavior across complex visual systems.</p>
+      <div class="t-dot"></div>
+    </div>
+    <div class="mrx-tech-cell">
+      <span class="t-idx">T / 05</span>
+      <h4>Lithographic Nanofabrication</h4>
+      <p>High-precision manufacturing of nanoscale optical geometries and diffractive structures.</p>
+      <div class="t-dot"></div>
+    </div>
+    <div class="mrx-tech-cell">
+      <span class="t-idx">T / 06</span>
+      <h4>Computational Optics</h4>
+      <p>Integration of software, optical simulation, and intelligent visual optimization workflows.</p>
+      <div class="t-dot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT PLATFORMS -->
+<section id="platforms">
+
+  <!-- M1: Myopia Control Lens -->
+  <div class="shell">
+    <div class="mrx-module reveal">
+      <div class="mrx-module-image">
+        <img src="images/myopia.jpeg" alt="MetaRx™ Myopia Control Lens — nano-patterned optical surface" loading="lazy">
+        <div class="m-corner">Commercial Platform</div>
+        <div class="m-corner-br">M / 01</div>
+        <div class="m-label">MetaRx™ · Myopia Control Lens</div>
+      </div>
+      <div class="mrx-module-content">
+        <div class="mrx-module-tag">
+          <span class="tag-num">M / 01</span>
+          <span>Commercial Platform</span>
+        </div>
+        <h2 class="mrx-module-h">Myopia Management Through Nanophotonic Optics</h2>
+        <p class="mrx-module-body">The MetaRx™ Myopia Control Lens applies nanoscale optical engineering to support modern myopia management through precision light modulation and peripheral defocus control. Unlike conventional approaches, the MetaRx™ architecture enables highly controlled optical behavior through lithographically engineered surface geometries at the nanoscale.</p>
+        <div class="mrx-module-lists">
+          <div class="mrx-module-list">
+            <div class="mrx-module-list-label">Key Technologies</div>
+            <ul>
+              <li>Nano-patterned optical surfaces</li>
+              <li>Peripheral defocus management</li>
+              <li>Optical phase modulation</li>
+              <li>Computational wavefront optimization</li>
+              <li>Precision lithographic fabrication</li>
+            </ul>
+          </div>
+          <div class="mrx-module-list">
+            <div class="mrx-module-list-label">Applications</div>
+            <ul>
+              <li>Pediatric myopia management</li>
+              <li>Preventive vision care</li>
+              <li>Intelligent ophthalmic systems</li>
+              <li>Advanced corrective optics</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mrx-module-cta">
+          <a class="btn btn-primary" href="contact.html">
+            <span class="dot"></span>
+            Explore Commercialization
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- M2: Airlens -->
+  <div class="shell">
+    <div class="mrx-module reverse reveal">
+      <div class="mrx-module-image">
+        <img src="images/Airlens.jpg" alt="Airlens™ 0.3 — flat metalens optical architecture" loading="lazy">
+        <div class="m-corner">Research Platform</div>
+        <div class="m-corner-br">M / 02</div>
+        <div class="m-label">Airlens™ 0.3 · Flat Optics</div>
+      </div>
+      <div class="mrx-module-content">
+        <div class="mrx-module-tag">
+          <span class="tag-num">M / 02</span>
+          <span>Research Platform</span>
+        </div>
+        <h2 class="mrx-module-h">Flat Optics Powered by Metasurface Engineering</h2>
+        <p class="mrx-module-body">Airlens™ 0.3 is MetaRx™'s next-generation metalens research platform exploring ultra-thin optical architectures built using nanoscale metasurface engineering. It replaces traditional refractive curvature with precisely engineered subwavelength structures capable of manipulating optical phase directly at the surface level.</p>
+        <div class="mrx-module-lists">
+          <div class="mrx-module-list">
+            <div class="mrx-module-list-label">Key Technologies</div>
+            <ul>
+              <li>Metasurface optical engineering</li>
+              <li>Metalens architectures</li>
+              <li>Subwavelength optical structures</li>
+              <li>Nano-imprint lithography</li>
+              <li>Computational photonics</li>
+            </ul>
+          </div>
+          <div class="mrx-module-list">
+            <div class="mrx-module-list-label">Potential Applications</div>
+            <ul>
+              <li>Ultra-thin ophthalmic lenses</li>
+              <li>Lightweight wearable systems</li>
+              <li>Compact AR optics</li>
+              <li>Intelligent optical modules</li>
+              <li>Future visual computing</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mrx-module-cta">
+          <a class="btn btn-primary" href="contact.html">
+            <span class="dot"></span>
+            Partner on Future Optical Systems
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- M3: FlexFocus -->
+  <div class="shell">
+    <div class="mrx-module reveal">
+      <div class="mrx-module-image">
+        <img src="images/flexfocus.png" alt="FlexFocus™ — adaptive electronically tunable lens system" loading="lazy">
+        <div class="m-corner">Adaptive Optics Platform</div>
+        <div class="m-corner-br">M / 03</div>
+        <div class="m-label">FlexFocus™ · Adaptive Optics</div>
+      </div>
+      <div class="mrx-module-content">
+        <div class="mrx-module-tag">
+          <span class="tag-num">M / 03</span>
+          <span>Adaptive Optics Platform</span>
+        </div>
+        <h2 class="mrx-module-h">Electronically Tunable Vision Systems</h2>
+        <p class="mrx-module-body">FlexFocus™ is MetaRx™'s adaptive optics platform focused on dynamically adjustable visual systems using electronically controlled optical modulation. By combining adaptive optics with precision nanophotonic engineering, FlexFocus™ enables a new category of responsive visual systems capable of transitioning between near and far focus dynamically.</p>
+        <div class="mrx-module-lists">
+          <div class="mrx-module-list">
+            <div class="mrx-module-list-label">Key Technologies</div>
+            <ul>
+              <li>Adaptive optical modulation</li>
+              <li>Electronically tunable focus</li>
+              <li>Liquid crystal optical architectures</li>
+              <li>Active optical phase control</li>
+              <li>Ultra-thin optical structures</li>
+            </ul>
+          </div>
+          <div class="mrx-module-list">
+            <div class="mrx-module-list-label">Potential Applications</div>
+            <ul>
+              <li>Adaptive ophthalmic lenses</li>
+              <li>Presbyopia correction</li>
+              <li>Smart eyewear systems</li>
+              <li>Wearable visual computing</li>
+              <li>Intelligent AR optics</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mrx-module-cta">
+          <a class="btn btn-primary" href="contact.html">
+            <span class="dot"></span>
+            Discuss Adaptive Optics Development
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- M4: AR Waveguides -->
+  <div class="shell">
+    <div class="mrx-module reverse reveal">
+      <div class="mrx-module-image">
+        <img src="images/ARwaveguide.png" alt="MetaRx™ AR Optical Waveguides — diffractive wearable optics" loading="lazy">
+        <div class="m-corner">OEM Optical Platform</div>
+        <div class="m-corner-br">M / 04</div>
+        <div class="m-label">MetaRx™ · AR Waveguides</div>
+      </div>
+      <div class="mrx-module-content">
+        <div class="mrx-module-tag">
+          <span class="tag-num">M / 04</span>
+          <span>OEM Optical Platform</span>
+        </div>
+        <h2 class="mrx-module-h">Waveguide Optics for Wearable AR Systems</h2>
+        <p class="mrx-module-body">MetaRx™ Optical Waveguides are advanced diffractive optical architectures engineered for lightweight wearable augmented reality systems. Built using lithographic nanofabrication and precision waveguide engineering, the platform enables compact light propagation, high-transparency visualization, and scalable integration into next-generation AR devices.</p>
+        <div class="mrx-module-lists">
+          <div class="mrx-module-list">
+            <div class="mrx-module-list-label">Key Technologies</div>
+            <ul>
+              <li>Diffractive waveguide optics</li>
+              <li>Lithographic optical fabrication</li>
+              <li>High-transparency structures</li>
+              <li>Waveguide light injection</li>
+              <li>Optical coupling architectures</li>
+            </ul>
+          </div>
+          <div class="mrx-module-list">
+            <div class="mrx-module-list-label">Customization Scope</div>
+            <ul>
+              <li>Field-of-view optimization</li>
+              <li>Brightness tuning</li>
+              <li>Waveguide geometry</li>
+              <li>Prescription integration</li>
+              <li>OEM optical integration</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mrx-module-cta">
+          <a class="btn btn-primary" href="contact.html">
+            <span class="dot"></span>
+            Build Your AR Optical Platform
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- M5: NTNB -->
+  <div class="shell">
+    <div class="mrx-module reveal">
+      <div class="mrx-module-image">
+        <img src="images/ntnb_bg.webp" alt="AKESO ntnb — advanced research cleanroom facility" loading="lazy">
+        <div class="m-corner">Advanced Research Initiative</div>
+        <div class="m-corner-br">M / 05</div>
+        <div class="m-label">NTNB · Research Systems</div>
+      </div>
+      <div class="mrx-module-content">
+        <div class="mrx-module-tag">
+          <span class="tag-num">M / 05</span>
+          <span>Advanced Research Initiative</span>
+        </div>
+        <h2 class="mrx-module-h">NTNB Research Systems</h2>
+        <p class="mrx-module-body">NTNB represents MetaRx™'s broader exploration into next-generation nanoscale optical systems, advanced photonic architectures, and future visual technologies. Operating as a research and development initiative, NTNB supports experimental optical technologies and future commercialization pathways — pushing the boundaries of precision optics and nanostructured materials.</p>
+        <div class="mrx-module-lists">
+          <div class="mrx-module-list">
+            <div class="mrx-module-list-label">Focus Areas</div>
+            <ul>
+              <li>Nanophotonic systems</li>
+              <li>Computational photonics</li>
+              <li>Precision optical architectures</li>
+              <li>Experimental visual technologies</li>
+              <li>Intelligent optical infrastructure</li>
+            </ul>
+          </div>
+          <div class="mrx-module-list">
+            <div class="mrx-module-list-label">Research Output</div>
+            <ul>
+              <li>Prototype fabrication</li>
+              <li>Process development</li>
+              <li>IP generation</li>
+              <li>Commercialization pathways</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mrx-module-cta">
+          <a class="btn btn-primary" href="https://ntnb-web.vercel.app" target="_blank" rel="noopener">
+            <span class="dot"></span>
+            Explore Research Collaboration
+          </a>
+          <a class="btn btn-ghost" href="https://ntnb-web.vercel.app" target="_blank" rel="noopener">Visit NTNB</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ENTERPRISE COLLABORATION -->
+<section class="mrx-collab">
+  <div class="reveal">
+    <span class="section-index" style="color:rgba(255,255,255,0.35)!important;margin-bottom:20px;display:block">05 — Enterprise Collaboration</span>
+    <h2>Built for Collaboration</h2>
+  </div>
+  <div class="mrx-collab-grid reveal-stagger">
+    <div class="mrx-collab-cell">
+      <span class="c-idx">C / 01</span>
+      <span class="c-title">Optical R&D</span>
+      <p class="c-body">Co-development of advanced optical technologies and visual systems.</p>
+      <div class="c-dot"></div>
+    </div>
+    <div class="mrx-collab-cell">
+      <span class="c-idx">C / 02</span>
+      <span class="c-title">OEM Integration</span>
+      <p class="c-body">Custom optical platforms engineered for enterprise products and wearable systems.</p>
+      <div class="c-dot"></div>
+    </div>
+    <div class="mrx-collab-cell">
+      <span class="c-idx">C / 03</span>
+      <span class="c-title">Nanophotonic Manufacturing</span>
+      <p class="c-body">Precision lithographic fabrication and nanoscale optical production.</p>
+      <div class="c-dot"></div>
+    </div>
+    <div class="mrx-collab-cell">
+      <span class="c-idx">C / 04</span>
+      <span class="c-title">Reference Architectures</span>
+      <p class="c-body">Commercialization-ready optical platforms adaptable to partner requirements.</p>
+      <div class="c-dot"></div>
+    </div>
+    <div class="mrx-collab-cell">
+      <span class="c-idx">C / 05</span>
+      <span class="c-title">Future Visual Systems</span>
+      <p class="c-body">Collaborative exploration into next-generation human vision technologies.</p>
+      <div class="c-dot"></div>
+    </div>
+  </div>
+  <div class="mrx-collab-ctas reveal-stagger">
+    <div class="mrx-collab-cta-cell">
+      <h5>Build With MetaRx™</h5>
+      <p>Develop advanced optical systems with AKESO's nanophotonic engineering platform.</p>
+      <a class="btn btn-primary" href="contact.html" style="margin-top:auto;align-self:flex-start">
+        <span class="dot"></span>Start Building
+      </a>
+    </div>
+    <div class="mrx-collab-cta-cell">
+      <h5>Commercialize Optical Technologies</h5>
+      <p>Partner with AKESO to transform research into scalable visual products.</p>
+      <a class="btn btn-primary" href="contact.html" style="margin-top:auto;align-self:flex-start">
+        <span class="dot"></span>Partner With Us
+      </a>
+    </div>
+    <div class="mrx-collab-cta-cell">
+      <h5>Discuss Optical Co-Development</h5>
+      <p>Collaborate across design, manufacturing, and future visual system development.</p>
+      <a class="btn btn-primary" href="contact.html" style="margin-top:auto;align-self:flex-start">
+        <span class="dot"></span>Get In Touch
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="mrx-final-cta">
+  <div class="reveal" style="display:flex;flex-direction:column;align-items:center;gap:28px">
+    <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35)">AKESO™ MetaRx™ · Advanced Nanophotonic Optics &amp; Precision Visual Systems</span>
+    <h2>Engineering the Future of Human Vision</h2>
+    <p>MetaRx™ combines nanophotonic research, precision optical engineering, computational wavefront optimization, and scalable manufacturing to develop advanced visual technologies for the next generation of human vision systems.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="contact.html">
+        <span class="dot"></span>Partner With MetaRx™
+      </a>
+      <a class="btn btn-hero-ghost" href="contact.html">Contact Research Team</a>
+      <a class="btn btn-hero-ghost" href="contact.html">Discuss Commercialization</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot-top">
+    <div class="foot-mark">
+      <svg viewBox="0 0 1193.28 246.77" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M374.69,107.54l103.32,135.17h-50.82l-80.97-106.71-36.93,37.94v68.77h-41.67V5.57h41.67v119.25L421.78,5.57h51.83l-98.92,101.97ZM544.06,142.09h118.91v-37.6h-118.91v-61.66h134.15V5.57h-175.82v237.14h177.52v-37.27h-135.85v-63.35ZM814.56,105.16c-45.73-10.84-56.57-18.97-56.57-37.27v-.68c0-15.92,14.23-28.12,38.62-28.12,21.68,0,42.68,8.47,64.37,24.39l22.36-31.51c-24.39-19.31-51.16-29.81-86.05-29.81-47.09,0-80.97,28.12-80.97,68.77v.68c0,43.36,28.46,58.95,78.93,70.8,44.04,9.82,53.53,19.65,53.53,36.25v.68c0,17.62-16.26,29.81-42.01,29.81-29.47,0-51.83-10.84-74.87-30.83l-25.07,29.81c28.46,25.75,62.33,37.94,98.92,37.94,49.8,0,84.69-26.09,84.69-70.8v-.68c0-39.64-26.09-56.57-75.89-69.45ZM1160.11,123.46v.68c0,66.4-51.49,122.64-124.33,122.64s-123.65-55.22-123.65-121.96v-.68c0-66.4,51.49-122.64,124.33-122.64s123.65,55.22,123.65,121.96ZM1116.41,124.14c0-46.07-33.2-84.02-80.63-84.02s-79.95,37.26-79.95,83.34v.68c0,46.07,33.2,84.02,80.63,84.02s79.95-37.27,79.95-83.34v-.68ZM22.69,196.22c13.54-13.95,29.95-25.04,48.4-32.43,2.02-.81,4.05-1.57,6.09-2.28l5.51-12.98,40.16-94.55.13-.31.13.31,40.16,94.55,5.51,12.98c2.05.7,4.08,1.46,6.1,2.28,18.44,7.39,34.85,18.47,48.39,32.42.86.89,2.31-.1,1.81-1.23L141.63,3.88h-37.27L20.88,194.98c-.49,1.13.95,2.12,1.81,1.23ZM172.41,170c-15.29-6.14-31.96-9.52-49.42-9.52s-34.13,3.38-49.42,9.52c-31.43,12.6-56.96,36.86-71.23,67.41-.83,1.74-1.61,3.52-2.34,5.3h41.29c1.19-1.92,2.46-3.79,3.79-5.62,17.51-24.08,45.91-39.77,77.91-39.77s60.4,15.69,77.91,39.77c1.34,1.83,2.6,3.71,3.79,5.62h41.29c-.74-1.79-1.52-3.56-2.34-5.3-14.27-30.54-39.81-54.81-71.23-67.41Z"/></svg>
+      <p>Research-driven visual technologies engineered around human vision.</p>
+    </div>
+    <div class="foot-col"><h5>Platform</h5><ul>
+      <li><a href="metarx.html" style="color:var(--accent)">MetaRx™</a></li>
+      <li><a href="technology.html#visual-intelligence">Ai+ Visual Intelligence</a></li>
+      <li><a href="technology.html#future-vision">Xr+ Future Vision Platforms</a></li>
+      <li><a href="technology.html">Technology</a></li>
+    </ul></div>
+    <div class="foot-col"><h5>Company</h5><ul>
+      <li><a href="research.html">Research Areas</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html#ntnb">AKESO ntnb</a></li>
+    </ul></div>
+    <div class="foot-col"><h5>Connect</h5><ul>
+      <li><a href="https://www.linkedin.com/company/akeso" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;color:var(--accent)"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a></li>
+      <li><a href="https://www.instagram.com/akesoglobal/" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;color:var(--accent)"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>Instagram</a></li>
+      <li><a href="https://x.com/akesoglobal" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;color:var(--accent)"><path d="M4 4l16 16M4 20L20 4"/></svg>X / Twitter</a></li>
+      <li><a href="mailto:hello@akesoeyecare.com"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;opacity:0.6"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>hello@akesoeyecare.com</a></li>
+    </ul></div>
+  </div>
+  <div class="foot-bottom">
+    <div class="foot-legal">
+      <span>Copyright © 2026 AKESO | Nantong Nuotong Yimu Medical Technology Co., Ltd · All Rights Reserved</span>
+      <span class="foot-legal-zh">南通诺瞳奕目医疗科技有限公司 &nbsp;|&nbsp; 电话：010-67082838 &nbsp;|&nbsp; 地址：江苏省南通市海门区临江镇洞庭湖路100号</span>
+    </div>
+    <div class="right">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <span class="foot-credit">Site by <a href="https://www.linkedin.com/in/sanangoyal" target="_blank" rel="noopener">Sanan Goyal</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="behavior.js"></script>
+<script src="i18n.js"></script>
+</body>
+</html>
