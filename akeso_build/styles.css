@@ -703,3 +703,16 @@ body { font-size: 16px; }
 .foot-credit { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: rgba(255,255,255,0.25); white-space: nowrap; }
 .foot-credit a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 200ms; }
 .foot-credit a:hover { color: var(--accent); }
+
+/* ── FOOTER INLINE SVG ICONS ────────────────────────────── */
+.foot-col a svg { opacity: 0.8; flex-shrink: 0; transition: opacity 200ms; }
+.foot-col a:hover svg { opacity: 1; }
+/* Social links flex */
+.foot-col a { display: flex; align-items: center; gap: 9px; }
+/* Legal block */
+.foot-legal { display: flex; flex-direction: column; gap: 5px; max-width: 70%; }
+.foot-legal span { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.06em; color: rgba(255,255,255,0.3); line-height: 1.6; }
+.foot-legal-zh { color: rgba(255,255,255,0.2) !important; }
+.foot-credit { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.06em; color: rgba(255,255,255,0.25); white-space: nowrap; }
+.foot-credit a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 200ms; }
+.foot-credit a:hover { color: var(--accent); }
