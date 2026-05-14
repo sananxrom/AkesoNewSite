@@ -33,10 +33,16 @@
 
   // ── NAV SOLID ON SCROLL ─────────────────────────────────────
   var nav = document.getElementById('nav');
+  var navIsDark = nav && nav.classList.contains('nav-on-dark');
   function onScroll() {
     if (!nav) return;
-    if (window.scrollY > 24) nav.classList.add('solid');
-    else nav.classList.remove('solid');
+    if (window.scrollY > 40) {
+      nav.classList.add('solid');
+    } else {
+      // Only go transparent if we're on homepage dark hero
+      if (navIsDark) nav.classList.remove('solid');
+      // else: stay solid — inner pages always need visible nav
+    }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
