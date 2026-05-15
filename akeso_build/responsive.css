@@ -12,6 +12,8 @@ img { max-width: 100%; height: auto; }
 /* ── HAMBURGER MENU BUTTON ───────────────────────────────────── */
 .nav-hamburger {
   display: none;
+  margin: 0;
+  padding: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -386,9 +388,11 @@ img { max-width: 100%; height: auto; }
 
 /* ── SAFE AREA (notch/home bar) ──────────────────────────────── */
 @supports (padding: max(0px)) {
+  @media (max-width: 768px) {
   .nav {
     padding-left: max(var(--pad-x), env(safe-area-inset-left));
     padding-right: max(var(--pad-x), env(safe-area-inset-right));
+  }
   }
   footer.foot {
     padding-bottom: max(32px, env(safe-area-inset-bottom));
@@ -412,4 +416,120 @@ img { max-width: 100%; height: auto; }
 }
 @media (max-width: 480px) {
   .sys-grid { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   INNER PAGE LAYOUT FIXES — high specificity overrides
+   Targets inline <style> defined grids in technology, research,
+   about, contact pages
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── TECHNOLOGY PAGE ──────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  /* Platform blocks: visual above, content below */
+  .platform-block,
+  .platform-block.reverse {
+    grid-template-columns: 1fr !important;
+    direction: ltr !important;
+    gap: clamp(24px, 4vw, 40px) !important;
+  }
+  .platform-block.reverse > * { direction: ltr !important; }
+  .platform-visual { aspect-ratio: 16/9 !important; }
+
+  /* Philosophy dark section grid */
+  .philosophy .grid {
+    grid-template-columns: 1fr !important;
+    gap: clamp(32px, 5vw, 48px) !important;
+  }
+
+  /* System overview: 3→2 cols */
+  .sys-grid { grid-template-columns: 1fr 1fr !important; }
+}
+@media (max-width: 640px) {
+  .sys-grid { grid-template-columns: 1fr !important; }
+  .sys-cell { min-height: auto !important; }
+  .platform-visual { aspect-ratio: 4/3 !important; }
+  .spec-row { grid-template-columns: 1fr !important; gap: 4px !important; }
+  .spec-row .k { padding-top: 0 !important; }
+}
+
+/* ── RESEARCH PAGE ────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  /* Discipline blocks: meta above, content below */
+  .discipline {
+    grid-template-columns: 1fr !important;
+    gap: clamp(20px, 3vw, 36px) !important;
+  }
+  .disc-meta { position: static !important; }
+
+  /* Discipline areas: 2→2 cols on tablet, 1 on mobile */
+  .disc-areas { grid-template-columns: 1fr 1fr !important; }
+  .disc-visual { aspect-ratio: 16/7 !important; }
+}
+@media (max-width: 640px) {
+  .disc-areas { grid-template-columns: 1fr !important; }
+}
+
+/* ── ABOUT PAGE ───────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  /* Origin: image above text */
+  .origin {
+    grid-template-columns: 1fr !important;
+    gap: clamp(28px, 4vw, 48px) !important;
+  }
+  /* Leadership: single column */
+  .leadership-grid {
+    grid-template-columns: 1fr !important;
+    gap: clamp(28px, 4vw, 44px) !important;
+  }
+  /* Team block: image above text */
+  .team-block {
+    grid-template-columns: 1fr !important;
+    gap: clamp(24px, 3vw, 40px) !important;
+  }
+  /* Pillars: 2→2 cols on tablet */
+  .pillars { grid-template-columns: 1fr 1fr !important; }
+}
+@media (max-width: 640px) {
+  .pillars { grid-template-columns: 1fr !important; }
+  .leader-card {
+    grid-template-columns: 100px 1fr !important;
+    gap: 14px !important;
+  }
+  /* Values row: hide description on small screens */
+  .value-row {
+    grid-template-columns: 28px 1fr !important;
+    gap: 12px !important;
+  }
+  .value-row .v-desc { display: none !important; }
+}
+
+/* ── CONTACT PAGE ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  /* Contact layout: channels above, details below */
+  .contact-layout {
+    grid-template-columns: 1fr !important;
+    gap: clamp(36px, 5vw, 56px) !important;
+  }
+  .contact-details { position: static !important; }
+
+  /* Partnership grid: 3→2 */
+  .partnership-grid { grid-template-columns: 1fr 1fr !important; }
+}
+@media (max-width: 640px) {
+  .partnership-grid { grid-template-columns: 1fr !important; }
+  .partnership-cell { min-height: auto !important; }
+  /* Social links stacked */
+  .social-links { gap: 12px !important; }
+}
+
+/* ── PAGE HERO INNER PAGES ────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Inline-styled page heroes have large font sizes — override */
+  .page-hero h1 {
+    font-size: clamp(28px, 7.5vw, 52px) !important;
+    margin-bottom: 18px !important;
+  }
+  .page-hero p { font-size: 15px !important; }
+  .page-hero { padding-top: clamp(80px, 12vw, 100px) !important; }
 }
