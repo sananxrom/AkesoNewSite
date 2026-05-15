@@ -278,3 +278,87 @@
     requestAnimationFrame(loop);
   })();
 })();
+
+// ── HAMBURGER MENU ────────────────────────────────────────────
+(function() {
+  var nav = document.getElementById('nav');
+  if (!nav) return;
+
+  // Inject hamburger button into nav
+  var hamburger = document.createElement('button');
+  hamburger.className = 'nav-hamburger';
+  hamburger.setAttribute('aria-label', 'Toggle menu');
+  hamburger.setAttribute('aria-expanded', 'false');
+  hamburger.innerHTML = '<span></span><span></span><span></span>';
+  nav.appendChild(hamburger);
+
+  // Inject mobile overlay
+  var overlay = document.createElement('div');
+  overlay.className = 'nav-mobile-overlay';
+
+  // Build mobile links from existing nav links
+  var navLinks = nav.querySelectorAll('.nav-links a');
+  var mobileLinksHTML = '<nav class="nav-mobile-links">';
+  navLinks.forEach(function(a) {
+    var clone = a.cloneNode(true);
+    // Add arrow
+    var arrow = document.createElement('span');
+    arrow.className = 'arrow';
+    arrow.textContent = '→';
+    clone.appendChild(arrow);
+    mobileLinksHTML += clone.outerHTML;
+  });
+  mobileLinksHTML += '</nav>';
+
+  // Lang toggle + CTA
+  var langToggle = nav.querySelector('.lang-toggle');
+  var cta = nav.querySelector('.nav-cta');
+  var bottomHTML = '<div class="nav-mobile-bottom">';
+  if (cta) bottomHTML += cta.outerHTML;
+  if (langToggle) bottomHTML += langToggle.outerHTML;
+  bottomHTML += '</div>';
+
+  overlay.innerHTML = mobileLinksHTML + bottomHTML;
+  document.body.appendChild(overlay);
+
+  // Open/close
+  var isOpen = false;
+
+  function openMenu() {
+    isOpen = true;
+    hamburger.classList.add('open');
+    overlay.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    isOpen = false;
+    hamburger.classList.remove('open');
+    overlay.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', function() {
+    if (isOpen) closeMenu(); else openMenu();
+  });
+
+  // Close on link click
+  overlay.querySelectorAll('.nav-mobile-links a').forEach(function(a) {
+    a.addEventListener('click', closeMenu);
+  });
+
+  // Close on overlay background tap
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeMenu();
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && isOpen) closeMenu();
+  });
+
+  // Close when nav goes solid (scrolled past hero — menu no longer needed visible)
+  // Actually keep open if user opened it
+})();
